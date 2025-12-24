@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - FinGold ERP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        
+        /* --- Architectural Card --- */
+        .arch-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .arch-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.15);
+            border-color: #FCD34D;
+        }
+
+        /* Enterprise Dark Theme */
+        .arch-card.enterprise {
+            background: #0F172A;
+            border: 1px solid #1E293B;
+            color: white;
+        }
+        .arch-card.enterprise:hover {
+            box-shadow: 0 30px 60px -12px rgba(234, 179, 8, 0.3);
+            border-color: #EAB308;
+        }
+
+        /* Gradient Text */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* List Items */
+        .feature-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; margin-bottom: 12px; }
+        .icon-check { color: #16A34A; flex-shrink: 0; width: 20px; height: 20px; } /* Green Tick */
+        .icon-cross { color: #EF4444; flex-shrink: 0; width: 20px; height: 20px; opacity: 0.7; } /* Red Cross */
+        .text-disabled { color: #94A3B8; text-decoration: line-through; } /* Strikethrough for missing features */
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-200 selection:text-slate-900">
+    
+    <div id="app-header"></div>
+
+    <section class="relative bg-slate-900 py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-500/10 rounded-full blur-[80px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 reveal">
+                Pick a plan that's right for your <br> <span class="text-gradient-gold">Gold Loan Business</span>
+            </h1>
+            <p class="text-lg text-slate-400 reveal delay-100">
+                Make Business Banking Simpler, Faster, and More Efficient.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 -mt-16 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                
+                <div class="arch-card rounded-3xl p-8 lg:p-10 reveal">
+                    <div class="text-center mb-8 border-b border-slate-100 pb-8">
+                        <h3 class="text-2xl font-bold text-slate-900">Professional Version</h3>
+                        <div class="mt-4 flex justify-center items-baseline gap-1">
+                            <span class="text-5xl font-extrabold text-slate-900">₹21,600</span>
+                            <span class="text-sm font-bold text-slate-500 uppercase tracking-wide">Lifetime License</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2 font-medium bg-slate-100 inline-block px-3 py-1 rounded-full">
+                            Yearly Subscription Charges: ₹6,000
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Pawn Broking Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Accounts Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Image Capture Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">SMS Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Tally Export Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Repledge Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Common Masters Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700 font-medium">Multiple Licenses Module</span>
+                        </div>
+                        
+                        <div class="feature-item pt-4 border-t border-slate-100 mt-4">
+                            <svg class="icon-cross" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span class="text-disabled text-sm">Bio-Metric Integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-cross" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span class="text-disabled text-sm">Aadhar Integration</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="contact.html" class="block w-full py-4 rounded-xl border-2 border-slate-200 text-slate-700 font-bold text-center hover:border-slate-900 hover:text-slate-900 transition-colors">Select Professional</a>
+                    </div>
+                </div>
+
+                <div class="arch-card enterprise rounded-3xl p-8 lg:p-10 reveal delay-100 relative">
+                    <div class="absolute top-0 right-0 bg-yellow-500 text-slate-900 text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">
+                        Recommended
+                    </div>
+
+                    <div class="text-center mb-8 border-b border-slate-700 pb-8">
+                        <h3 class="text-2xl font-bold text-white">Enterprise Version</h3>
+                        <div class="mt-4 flex justify-center items-baseline gap-1">
+                            <span class="text-5xl font-extrabold text-yellow-400">₹30,000</span>
+                            <span class="text-sm font-bold text-slate-400 uppercase tracking-wide">Lifetime License</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-2 font-medium bg-slate-800 inline-block px-3 py-1 rounded-full border border-slate-600">
+                            Yearly Subscription Charges: ₹6,000
+                        </p>
+                    </div>
+
+                    <div class="space-y-2 text-slate-300">
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Pawn Broking Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Accounts Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Image Capture Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>SMS Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Tally Export Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Repledge Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Common Masters Module</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg class="icon-check text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Multiple Licenses Module</span>
+                        </div>
+                        
+                        <div class="feature-item pt-4 border-t border-slate-700 mt-4 bg-slate-800/50 -mx-4 px-4 py-3 rounded-lg">
+                            <svg class="icon-check text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-bold">Bio-Metric Integration</span>
+                        </div>
+                        <div class="feature-item bg-slate-800/50 -mx-4 px-4 py-3 rounded-lg mb-0">
+                            <svg class="icon-check text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-bold">Aadhar Integration</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="contact.html" class="block w-full py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-slate-900 font-bold text-center hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all">Get Enterprise</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-slate-50 p-6 rounded-2xl border border-slate-100 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none">
+                        <span>Why is there a Yearly Subscription charge?</span>
+                        <span class="transition group-open:rotate-180 text-yellow-600"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 text-sm leading-relaxed">
+                        The initial cost covers the <strong>Lifetime License</strong>. The yearly fee of ₹6,000 covers Cloud Server Maintenance (AWS), Daily Data Backups, Technical Support, and Software Updates.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 p-6 rounded-2xl border border-slate-100 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 list-none">
+                        <span>Do I need to buy a biometric device separately?</span>
+                        <span class="transition group-open:rotate-180 text-yellow-600"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 text-sm leading-relaxed">
+                        Yes. FinGold Enterprise supports standard devices like Mantra or Morpho, but the hardware itself must be purchased separately.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <div id="app-footer"></div>
+
+    <script src="components.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - FinGold Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* --- Smooth Reveal Animation --- */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        /* --- Custom UI Components --- */
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #CA8A04 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Floating Animation for UI Elements */
+        @keyframes hover-card {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-hover { animation: hover-card 5s ease-in-out infinite; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-200 selection:text-slate-900">
+    
+    <div id="app-header"></div>
+
+    <section class="relative bg-white pt-24 pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-100/40 via-slate-50 to-white"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 border border-yellow-200 text-yellow-700 text-xs font-bold uppercase tracking-widest mb-6 reveal">
+                Feature Tour
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight reveal" style="transition-delay: 100ms;">
+                Every tool needed to run a <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-600">Modern Gold Business</span>
+            </h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">
+                We digitized the entire workflow. From the moment a customer walks in with gold, to the moment you file your GST returns.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                
+                <div class="lg:w-1/2 reveal">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Advanced Lending Engine</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Calculate interest with surgical precision. Whether you use <strong>Simple, Compound, or Monthly Flat</strong> rates, our engine handles it.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Auto-Fetch Rates</h4>
+                                <p class="text-sm text-slate-500">System automatically picks interest rates based on Loan Value (LTV) or Market Value.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Jump Interest Slabs</h4>
+                                <p class="text-sm text-slate-500">Automatically switch interest slabs if a customer delays payment beyond a specific period.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Visual Documentation</h4>
+                                <p class="text-sm text-slate-500">Capture photos of ornaments and customers via webcam. Attach directly to loan receipt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
+                    <div class="bg-slate-900 rounded-3xl p-6 shadow-2xl relative z-10 border border-slate-700">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="text-white font-bold">New Loan Entry</div>
+                            <div class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Active</div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="w-1/3 h-10 bg-slate-800 rounded-lg animate-pulse"></div>
+                                <div class="w-2/3 h-10 bg-slate-800 rounded-lg"></div>
+                            </div>
+                            <div class="h-24 bg-slate-800 rounded-lg p-3">
+                                <div class="flex justify-between text-xs text-slate-400 mb-2">
+                                    <span>Gold Weight (Gross)</span>
+                                    <span>Rate/gm</span>
+                                </div>
+                                <div class="flex justify-between text-white font-mono text-lg">
+                                    <span>24.500 g</span>
+                                    <span>₹ 5,200</span>
+                                </div>
+                                <div class="mt-2 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                                    <div class="bg-yellow-500 w-3/4 h-full"></div>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-500 p-4 rounded-xl flex justify-between items-center text-slate-900">
+                                <span class="font-bold text-sm">Max Loan Amount</span>
+                                <span class="font-extrabold text-xl">₹ 1,12,500</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-full h-full bg-yellow-100 rounded-3xl -z-10"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-20">
+                
+                <div class="lg:w-1/2 text-white reveal">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Smart Repledge Management</h2>
+                    <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                        Manage loans you have repledged with banks. Our system tracks the intricate difference between what you earn vs what you pay.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-4 bg-slate-800 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-1">Multi-Bank</h4>
+                            <p class="text-xs text-slate-400">Consolidated view of all bank limits and utilized amounts.</p>
+                        </div>
+                        <div class="p-4 bg-slate-800 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-1">Profit Analysis</h4>
+                            <p class="text-xs text-slate-400">Compare Borrower Interest vs Bank Interest instantly.</p>
+                        </div>
+                        <div class="p-4 bg-slate-800 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-1">Bulk Packet</h4>
+                            <p class="text-xs text-slate-400">Bundle multiple customer loans into one single bank packet.</p>
+                        </div>
+                        <div class="p-4 bg-slate-800 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-1">Borrower Mapping</h4>
+                            <p class="text-xs text-slate-400">Repledge loans under different person names in the same bank.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-1 shadow-2xl animate-hover">
+                        <div class="bg-slate-900 rounded-[22px] p-6 h-full">
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 mb-4 border border-slate-600">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="text-xs text-slate-400 uppercase">Bank Limit</div>
+                                    <svg class="w-6 h-6 text-white opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+                                </div>
+                                <div class="text-2xl font-mono text-white mb-1">₹ 50,00,000</div>
+                                <div class="w-full bg-slate-900 h-1.5 rounded-full mt-2">
+                                    <div class="bg-blue-500 w-[65%] h-full rounded-full"></div>
+                                </div>
+                                <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                                    <span>Used: 65%</span>
+                                    <span>Available: 35%</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-slate-800 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">G</div>
+                                        <div class="text-sm">
+                                            <div class="text-white">Gold Packet #402</div>
+                                            <div class="text-[10px] text-slate-400">SBI • 12.5% ROI</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-white font-mono text-sm">₹ 2.5L</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-800 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-yellow-500/20 text-yellow-500 flex items-center justify-center font-bold">G</div>
+                                        <div class="text-sm">
+                                            <div class="text-white">Gold Packet #405</div>
+                                            <div class="text-[10px] text-slate-400">HDFC • 11.0% ROI</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-white font-mono text-sm">₹ 1.8L</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                
+                <div class="lg:w-1/2 reveal">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Seamless Financial Ecosystem</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Forget Tally. FinGold comes with complete accounting inbuilt. Every loan entry creates a journal entry automatically.
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span> GST Ready
+                        </h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-3">
+                                <strong>GSTR-1 & 3B</strong><br>Auto-generated reports
+                            </div>
+                            <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-3">
+                                <strong>E-Way Bills</strong><br>Direct Integration
+                            </div>
+                            <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-3">
+                                <strong>Multi-Entity</strong><br>Manage multiple licenses
+                            </div>
+                            <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-3">
+                                <strong>Regional</strong><br>Print bills in local language
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
+                    <div class="glass-surface p-8 rounded-3xl relative z-10">
+                        <div class="flex items-end gap-2 mb-6">
+                            <div class="w-3 h-12 bg-slate-200 rounded-t"></div>
+                            <div class="w-3 h-16 bg-slate-200 rounded-t"></div>
+                            <div class="w-3 h-20 bg-slate-300 rounded-t"></div>
+                            <div class="w-3 h-24 bg-yellow-400 rounded-t shadow-lg shadow-yellow-400/50"></div>
+                            <div class="w-3 h-14 bg-slate-200 rounded-t"></div>
+                            <div class="w-3 h-18 bg-slate-200 rounded-t"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
+                                <span class="text-sm font-bold text-slate-700">Cash in Hand</span>
+                                <span class="text-green-600 font-mono font-bold">₹ 12,45,000</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
+                                <span class="text-sm font-bold text-slate-700">Net Profit (M)</span>
+                                <span class="text-blue-600 font-mono font-bold">₹ 4,20,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-10 -left-10 w-32 h-32 bg-green-400/20 rounded-full blur-2xl"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold text-slate-900">Everything Else You Need</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal">
+                    <div class="text-2xl mb-3">🔔</div>
+                    <h4 class="font-bold text-slate-900 mb-1">SMS & WhatsApp</h4>
+                    <p class="text-xs text-slate-500">Auto-send welcome messages, due reminders, and auction notices.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-100">
+                    <div class="text-2xl mb-3">⚖️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Auction Mgt</h4>
+                    <p class="text-xs text-slate-500">Track Auction Standing Loans and generate legal notices automatically.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-200">
+                    <div class="text-2xl mb-3">👆</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Biometric Login</h4>
+                    <p class="text-xs text-slate-500">Secure staff access with Fingerprint and Face Recognition.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-300">
+                    <div class="text-2xl mb-3">☁️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Cloud Backup</h4>
+                    <p class="text-xs text-slate-500">Your data is secured on AWS with daily automated backups.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal">
+                    <div class="text-2xl mb-3">🔨</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Karigar Mgt</h4>
+                    <p class="text-xs text-slate-500">Track gold issued to artisans and calculate wastage accurately.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-100">
+                    <div class="text-2xl mb-3">📱</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Mobile App</h4>
+                    <p class="text-xs text-slate-500">Owners and customers get dedicated apps for tracking status.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-200">
+                    <div class="text-2xl mb-3">🔐</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Role Access</h4>
+                    <p class="text-xs text-slate-500">Define strict permissions for Managers, Cashiers, and Auditors.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-lg transition duration-300 border border-slate-100 reveal delay-300">
+                    <div class="text-2xl mb-3">🏢</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Multi-Branch</h4>
+                    <p class="text-xs text-slate-500">Centralized admin panel to view all branches in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-yellow-500 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Stop managing books. Start managing growth.</h2>
+            <div class="flex justify-center gap-4">
+                <a href="contact.html" class="bg-slate-900 text-white hover:bg-slate-800 font-bold py-4 px-10 rounded-full shadow-xl transition-transform hover:-translate-y-1">
+                    Book a Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="app-footer"></div>
+
+    <script src="components.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

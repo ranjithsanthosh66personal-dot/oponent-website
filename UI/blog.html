@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FinGold</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-slate-50 flex flex-col min-h-screen pt-20">
+    <div id="app-header"></div>
+
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-slate-900">Industry Insights</h1>
+                <p class="mt-4 text-xl text-slate-500">Latest news on Hallmarking, GST, and Market Trends.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <img src="https://placehold.co/400x250/f1c40f/1e293b?text=HUID+Regulations" alt="HUID" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-yellow-600 font-bold uppercase">Compliance</span>
+                        <h3 class="mt-2 text-xl font-bold text-slate-900">Understanding New HUID Hallmarking Rules</h3>
+                        <p class="mt-2 text-slate-500 text-sm">A complete guide for retailers on how to manage stock with the new 6-digit HUID code.</p>
+                        <a href="#" class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600">Read more &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <img src="https://placehold.co/400x250/1e293b/FFF?text=Digital+Invoicing" alt="Billing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-blue-600 font-bold uppercase">Technology</span>
+                        <h3 class="mt-2 text-xl font-bold text-slate-900">Why Handwritten Bills are Costing You Money</h3>
+                        <p class="mt-2 text-slate-500 text-sm">Digital invoicing isn't just about speed; it's about eliminating calculation errors and theft.</p>
+                        <a href="#" class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600">Read more &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                     <img src="https://placehold.co/400x250/e2e8f0/1e293b?text=Gold+Trends+2025" alt="Trends" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs text-green-600 font-bold uppercase">Market</span>
+                        <h3 class="mt-2 text-xl font-bold text-slate-900">Gold Price Trends for Q1 2025</h3>
+                        <p class="mt-2 text-slate-500 text-sm">Expert analysis on how global geopolitical events are affecting local bullion rates.</p>
+                        <a href="#" class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600">Read more &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="app-footer"></div>
+    <script src="components.js"></script>
+</body>
+</html>
