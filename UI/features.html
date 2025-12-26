@@ -1,409 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Features - FinGold Platform</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <style>
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
-        }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        overflow-x: hidden;
+      }
 
-        /* --- Custom Cursor --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none;
-        }
-        .cursor-dot { width: 8px; height: 8px; background: #EAB308; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(234, 179, 8, 0.5); transition: all 0.2s ease-out; }
+      /* --- Custom Cursor --- */
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #eab308;
+      }
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(234, 179, 8, 0.5);
+        transition: all 0.2s ease-out;
+      }
 
-        /* --- Animations --- */
-        .char-reveal { display: inline-block; overflow: hidden; }
-        .char { transform: translateY(100%); display: inline-block; }
+      /* --- Animations --- */
+      .char-reveal {
+        display: inline-block;
+        overflow: hidden;
+      }
+      .char {
+        transform: translateY(100%);
+        display: inline-block;
+      }
 
-        /* --- 3D Holographic Card Effect --- */
-        .holo-card {
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-        }
-        .holo-content { transform: translateZ(20px); }
-        .holo-glow {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.1), transparent 40%);
-            pointer-events: none; mix-blend-mode: overlay; z-index: 10;
-        }
+      /* --- 3D Holographic Card Effect --- */
+      .holo-card {
+        transform-style: preserve-3d;
+        transition: transform 0.1s ease-out;
+      }
+      .holo-content {
+        transform: translateZ(20px);
+      }
+      .holo-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at var(--mouse-x) var(--mouse-y),
+          rgba(255, 255, 255, 0.1),
+          transparent 40%
+        );
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        z-index: 10;
+      }
 
-        /* --- Grid Item Hover --- */
-        .feature-grid-item {
-            /* Critical for performance during the split animation */
-            will-change: transform, opacity;
-            background: white;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease; 
-        }
-        .feature-grid-item:hover {
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-            border-color: #EAB308;
-            z-index: 10;
-        }
+      /* --- Grid Item Hover --- */
+      .feature-grid-item {
+        /* Critical for performance during the split animation */
+        will-change: transform, opacity;
+        background: white;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .feature-grid-item:hover {
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+        border-color: #eab308;
+        z-index: 10;
+      }
     </style>
-</head>
-<body class="bg-stone-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-500 selection:text-white cursor-none">
-    
+  </head>
+  <body
+    class="bg-stone-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-500 selection:text-white cursor-none"
+  >
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
 
     <div id="app-header"></div>
 
     <section class="relative bg-stone-50 pt-24 pb-32 overflow-hidden" id="hero">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-100/40 via-stone-50 to-white opacity-50"></div>
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] animate-pulse"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="gsap-fade-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 text-yellow-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
-                Feature Tour
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-                <span class="char-reveal block"><span class="char">Every tool needed to run a</span></span>
-                <span class="char-reveal block"><span class="char text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-600">Modern Gold Business</span></span>
-            </h1>
-            
-            <p class="gsap-fade-up text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-                We digitized the entire workflow. From the moment a customer walks in with gold, to the moment you file your GST returns.
-            </p>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-100/40 via-stone-50 to-white opacity-50"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] animate-pulse"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+      >
+        <div
+          class="gsap-fade-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 text-yellow-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm"
+        >
+          Feature Tour
         </div>
+
+        <h1
+          class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight"
+        >
+          <span class="char-reveal block"
+            ><span class="char">Every tool needed to run a</span></span
+          >
+          <span class="char-reveal block"
+            ><span
+              class="char text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-600"
+              >Modern Gold Business</span
+            ></span
+          >
+        </h1>
+
+        <p
+          class="gsap-fade-up text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed"
+        >
+          We digitized the entire workflow. From the moment a customer walks in
+          with gold, to the moment you file your GST returns.
+        </p>
+      </div>
     </section>
 
     <section class="py-24 bg-white relative border-t border-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-20">
-                <div class="lg:w-1/2">
-                    <div class="gsap-fade-right w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-600 mb-6 border border-yellow-100">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h2 class="gsap-fade-right text-3xl md:text-4xl font-bold text-slate-900 mb-6">Advanced Lending Engine</h2>
-                    <p class="gsap-fade-right text-lg text-slate-600 mb-8 leading-relaxed">
-                        Calculate interest with surgical precision. Whether you use <strong>Simple, Compound, or Monthly Flat</strong> rates, our engine handles it automatically.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="gsap-stagger-item flex gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Auto-Fetch Rates</h4>
-                                <p class="text-sm text-slate-500">System automatically picks interest rates based on Loan Value (LTV).</p>
-                            </div>
-                        </div>
-                        <div class="gsap-stagger-item flex gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Jump Interest Slabs</h4>
-                                <p class="text-sm text-slate-500">Automatically switch interest slabs if a customer delays payment.</p>
-                            </div>
-                        </div>
-                        <div class="gsap-stagger-item flex gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">✓</div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Visual Documentation</h4>
-                                <p class="text-sm text-slate-500">Capture photos of ornaments and customers via webcam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:w-1/2 relative perspective-3d" id="lending-card-container">
-                    <div class="holo-card relative bg-slate-900 rounded-3xl p-6 shadow-2xl z-10 border border-slate-700 overflow-hidden transform transition-transform duration-100">
-                        <div class="holo-glow"></div>
-                        <div class="holo-content">
-                            <div class="flex justify-between items-center mb-6">
-                                <div class="text-white font-bold">New Loan Entry</div>
-                                <div class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30">Active</div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex gap-4">
-                                    <div class="w-1/3 h-10 bg-slate-800 rounded-lg animate-pulse"></div>
-                                    <div class="w-2/3 h-10 bg-slate-800 rounded-lg"></div>
-                                </div>
-                                <div class="h-24 bg-slate-800 rounded-lg p-3 border border-slate-700">
-                                    <div class="flex justify-between text-xs text-slate-400 mb-2">
-                                        <span>Gold Weight</span><span>Rate/gm</span>
-                                    </div>
-                                    <div class="flex justify-between text-white font-mono text-lg">
-                                        <span>24.500 g</span><span>₹ 5,200</span>
-                                    </div>
-                                    <div class="mt-2 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
-                                        <div class="bg-yellow-500 w-3/4 h-full"></div>
-                                    </div>
-                                </div>
-                                <div class="bg-gradient-to-r from-yellow-500 to-amber-500 p-4 rounded-xl flex justify-between items-center text-slate-900 shadow-lg">
-                                    <span class="font-bold text-sm">Max Loan Amount</span>
-                                    <span class="font-extrabold text-xl">₹ 1,12,500</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute -top-10 -right-10 w-full h-full bg-yellow-100/50 rounded-3xl -z-10 rotate-6 scale-90 transition-transform duration-700 group-hover:rotate-12"></div>
-                </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-20">
+          <div class="lg:w-1/2">
+            <div
+              class="gsap-fade-right w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-600 mb-6 border border-yellow-100"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
             </div>
+            <h2
+              class="gsap-fade-right text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+            >
+              Advanced Lending Engine
+            </h2>
+            <p
+              class="gsap-fade-right text-lg text-slate-600 mb-8 leading-relaxed"
+            >
+              Calculate interest with surgical precision. Whether you use
+              <strong>Simple, Compound, or Monthly Flat</strong> rates, our
+              engine handles it automatically.
+            </p>
+
+            <div class="space-y-6">
+              <div class="gsap-stagger-item flex gap-4">
+                <div
+                  class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold"
+                >
+                  ✓
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900">Auto-Fetch Rates</h4>
+                  <p class="text-sm text-slate-500">
+                    System automatically picks interest rates based on Loan
+                    Value (LTV).
+                  </p>
+                </div>
+              </div>
+              <div class="gsap-stagger-item flex gap-4">
+                <div
+                  class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold"
+                >
+                  ✓
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900">Jump Interest Slabs</h4>
+                  <p class="text-sm text-slate-500">
+                    Automatically switch interest slabs if a customer delays
+                    payment.
+                  </p>
+                </div>
+              </div>
+              <div class="gsap-stagger-item flex gap-4">
+                <div
+                  class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold"
+                >
+                  ✓
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900">Visual Documentation</h4>
+                  <p class="text-sm text-slate-500">
+                    Capture photos of ornaments and customers via webcam.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:w-1/2 relative perspective-3d"
+            id="lending-card-container"
+          >
+            <div
+              class="holo-card relative bg-slate-900 rounded-3xl p-6 shadow-2xl z-10 border border-slate-700 overflow-hidden transform transition-transform duration-100"
+            >
+              <div class="holo-glow"></div>
+              <div class="holo-content">
+                <div class="flex justify-between items-center mb-6">
+                  <div class="text-white font-bold">New Loan Entry</div>
+                  <div
+                    class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30"
+                  >
+                    Active
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex gap-4">
+                    <div
+                      class="w-1/3 h-10 bg-slate-800 rounded-lg animate-pulse"
+                    ></div>
+                    <div class="w-2/3 h-10 bg-slate-800 rounded-lg"></div>
+                  </div>
+                  <div
+                    class="h-24 bg-slate-800 rounded-lg p-3 border border-slate-700"
+                  >
+                    <div
+                      class="flex justify-between text-xs text-slate-400 mb-2"
+                    >
+                      <span>Gold Weight</span><span>Rate/gm</span>
+                    </div>
+                    <div
+                      class="flex justify-between text-white font-mono text-lg"
+                    >
+                      <span>24.500 g</span><span>₹ 5,200</span>
+                    </div>
+                    <div
+                      class="mt-2 w-full bg-slate-700 h-1 rounded-full overflow-hidden"
+                    >
+                      <div class="bg-yellow-500 w-3/4 h-full"></div>
+                    </div>
+                  </div>
+                  <div
+                    class="bg-gradient-to-r from-yellow-500 to-amber-500 p-4 rounded-xl flex justify-between items-center text-slate-900 shadow-lg"
+                  >
+                    <span class="font-bold text-sm">Max Loan Amount</span>
+                    <span class="font-extrabold text-xl">₹ 1,12,500</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute -top-10 -right-10 w-full h-full bg-yellow-100/50 rounded-3xl -z-10 rotate-6 scale-90 transition-transform duration-700 group-hover:rotate-12"
+            ></div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="py-24 bg-slate-900 relative overflow-hidden" id="repledge">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-20">
-                <div class="lg:w-1/2 text-white">
-                    <div class="gsap-fade-left w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6 border border-blue-500/30">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
-                    </div>
-                    <h2 class="gsap-fade-left text-3xl md:text-4xl font-bold mb-6">Smart Repledge Management</h2>
-                    <p class="gsap-fade-left text-lg text-slate-400 mb-8 leading-relaxed">
-                        Manage loans you have repledged with banks. Our system tracks the intricate difference between what you earn vs what you pay.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="gsap-fade-up-item p-4 bg-slate-800 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-1">Multi-Bank</h4>
-                            <p class="text-xs text-slate-400">Consolidated view of all bank limits and utilized amounts.</p>
-                        </div>
-                        <div class="gsap-fade-up-item p-4 bg-slate-800 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-1">Profit Analysis</h4>
-                            <p class="text-xs text-slate-400">Compare Borrower Interest vs Bank Interest instantly.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative perspective-3d" id="repledge-card-container">
-                    <div class="holo-card bg-gradient-to-br from-blue-900 to-slate-900 rounded-[2rem] p-1 shadow-2xl border border-blue-500/30">
-                        <div class="holo-glow"></div>
-                        <div class="bg-slate-900/90 backdrop-blur rounded-[1.8rem] p-6 h-full holo-content">
-                            <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 mb-6 border border-slate-600 shadow-lg">
-                                <div class="flex justify-between items-center mb-4">
-                                    <div class="text-xs text-blue-300 uppercase tracking-widest font-bold">Bank Limit</div>
-                                    <svg class="w-5 h-5 text-white opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
-                                </div>
-                                <div class="text-3xl font-mono text-white mb-2">₹ 50,00,000</div>
-                                <div class="w-full bg-slate-900 h-2 rounded-full mt-2 overflow-hidden">
-                                    <div class="bg-blue-500 w-[65%] h-full rounded-full shadow-[0_0_10px_#3b82f6]"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div
+        class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row-reverse items-center gap-20">
+          <div class="lg:w-1/2 text-white">
+            <div
+              class="gsap-fade-left w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6 border border-blue-500/30"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                ></path>
+              </svg>
             </div>
+            <h2 class="gsap-fade-left text-3xl md:text-4xl font-bold mb-6">
+              Smart Repledge Management
+            </h2>
+            <p
+              class="gsap-fade-left text-lg text-slate-400 mb-8 leading-relaxed"
+            >
+              Manage loans you have repledged with banks. Our system tracks the
+              intricate difference between what you earn vs what you pay.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div
+                class="gsap-fade-up-item p-4 bg-slate-800 rounded-xl border border-slate-700"
+              >
+                <h4 class="font-bold text-white mb-1">Multi-Bank</h4>
+                <p class="text-xs text-slate-400">
+                  Consolidated view of all bank limits and utilized amounts.
+                </p>
+              </div>
+              <div
+                class="gsap-fade-up-item p-4 bg-slate-800 rounded-xl border border-slate-700"
+              >
+                <h4 class="font-bold text-white mb-1">Profit Analysis</h4>
+                <p class="text-xs text-slate-400">
+                  Compare Borrower Interest vs Bank Interest instantly.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="lg:w-1/2 relative perspective-3d"
+            id="repledge-card-container"
+          >
+            <div
+              class="holo-card bg-gradient-to-br from-blue-900 to-slate-900 rounded-[2rem] p-1 shadow-2xl border border-blue-500/30"
+            >
+              <div class="holo-glow"></div>
+              <div
+                class="bg-slate-900/90 backdrop-blur rounded-[1.8rem] p-6 h-full holo-content"
+              >
+                <div
+                  class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 mb-6 border border-slate-600 shadow-lg"
+                >
+                  <div class="flex justify-between items-center mb-4">
+                    <div
+                      class="text-xs text-blue-300 uppercase tracking-widest font-bold"
+                    >
+                      Bank Limit
+                    </div>
+                    <svg
+                      class="w-5 h-5 text-white opacity-50"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="text-3xl font-mono text-white mb-2">
+                    ₹ 50,00,000
+                  </div>
+                  <div
+                    class="w-full bg-slate-900 h-2 rounded-full mt-2 overflow-hidden"
+                  >
+                    <div
+                      class="bg-blue-500 w-[65%] h-full rounded-full shadow-[0_0_10px_#3b82f6]"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="py-24 bg-stone-50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-20">
-                <div class="lg:w-1/2">
-                    <div class="gsap-fade-right w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6 border border-green-200">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h2 class="gsap-fade-right text-3xl md:text-4xl font-bold text-slate-900 mb-6">Seamless Financial Ecosystem</h2>
-                    <p class="gsap-fade-right text-lg text-slate-600 mb-8 leading-relaxed">
-                        Forget Tally. FinGold comes with complete accounting inbuilt. Every loan entry creates a journal entry automatically.
-                    </p>
-                    <div class="gsap-fade-up bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
-                        <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> GST Ready
-                        </h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-sm text-slate-600 border-l-2 border-stone-100 pl-3"><strong>GSTR-1 & 3B</strong><br>Auto-generated reports</div>
-                            <div class="text-sm text-slate-600 border-l-2 border-stone-100 pl-3"><strong>E-Way Bills</strong><br>Direct Integration</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative gsap-fade-left">
-                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl relative z-10 border border-white shadow-2xl">
-                        <div class="flex items-end gap-3 mb-8 h-40">
-                            <div class="chart-bar w-8 bg-stone-200 rounded-t h-0" data-height="40%"></div>
-                            <div class="chart-bar w-8 bg-stone-300 rounded-t h-0" data-height="60%"></div>
-                            <div class="chart-bar w-8 bg-yellow-400 rounded-t shadow-lg shadow-yellow-400/30 h-0" data-height="85%"></div>
-                            <div class="chart-bar w-8 bg-stone-200 rounded-t h-0" data-height="55%"></div>
-                        </div>
-                    </div>
-                    <div class="absolute top-10 -left-10 w-40 h-40 bg-green-400/20 rounded-full blur-3xl"></div>
-                </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-20">
+          <div class="lg:w-1/2">
+            <div
+              class="gsap-fade-right w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6 border border-green-200"
+            >
+              <svg
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                ></path>
+              </svg>
             </div>
+            <h2
+              class="gsap-fade-right text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+            >
+              Seamless Financial Ecosystem
+            </h2>
+            <p
+              class="gsap-fade-right text-lg text-slate-600 mb-8 leading-relaxed"
+            >
+              Forget Tally. FinGold comes with complete accounting inbuilt.
+              Every loan entry creates a journal entry automatically.
+            </p>
+            <div
+              class="gsap-fade-up bg-white p-6 rounded-2xl shadow-lg border border-stone-200"
+            >
+              <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span
+                  class="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                ></span>
+                GST Ready
+              </h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="text-sm text-slate-600 border-l-2 border-stone-100 pl-3"
+                >
+                  <strong>GSTR-1 & 3B</strong><br />Auto-generated reports
+                </div>
+                <div
+                  class="text-sm text-slate-600 border-l-2 border-stone-100 pl-3"
+                >
+                  <strong>E-Way Bills</strong><br />Direct Integration
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/2 relative gsap-fade-left">
+            <div
+              class="bg-white/80 backdrop-blur-md p-8 rounded-3xl relative z-10 border border-white shadow-2xl"
+            >
+              <div class="flex items-end gap-3 mb-8 h-40">
+                <div
+                  class="chart-bar w-8 bg-stone-200 rounded-t h-0"
+                  data-height="40%"
+                ></div>
+                <div
+                  class="chart-bar w-8 bg-stone-300 rounded-t h-0"
+                  data-height="60%"
+                ></div>
+                <div
+                  class="chart-bar w-8 bg-yellow-400 rounded-t shadow-lg shadow-yellow-400/30 h-0"
+                  data-height="85%"
+                ></div>
+                <div
+                  class="chart-bar w-8 bg-stone-200 rounded-t h-0"
+                  data-height="55%"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="absolute top-10 -left-10 w-40 h-40 bg-green-400/20 rounded-full blur-3xl"
+            ></div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="py-24 bg-white border-t border-stone-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 gsap-fade-up">
-                <h2 class="text-4xl font-bold text-slate-900">Everything Else You Need</h2>
-                <p class="text-slate-500 mt-2">More power packed into every module.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="feature-grid">
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">🔔</div>
-                    <h4 class="font-bold text-slate-900 mb-1">SMS & WhatsApp</h4>
-                    <p class="text-xs text-slate-500">Auto-send welcome messages, due reminders, and auction notices.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">⚖️</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Auction Mgt</h4>
-                    <p class="text-xs text-slate-500">Track Auction Standing Loans and generate legal notices automatically.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">👆</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Biometric Login</h4>
-                    <p class="text-xs text-slate-500">Secure staff access with Fingerprint and Face Recognition.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">☁️</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Cloud Backup</h4>
-                    <p class="text-xs text-slate-500">Your data is secured on AWS with daily automated backups.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">🔨</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Karigar Mgt</h4>
-                    <p class="text-xs text-slate-500">Track gold issued to artisans and calculate wastage accurately.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">📱</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Mobile App</h4>
-                    <p class="text-xs text-slate-500">Owners and customers get dedicated apps for tracking status.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">🔐</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Role Access</h4>
-                    <p class="text-xs text-slate-500">Define strict permissions for Managers, Cashiers, and Auditors.</p>
-                </div>
-                <div class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default">
-                    <div class="text-3xl mb-3">🏢</div>
-                    <h4 class="font-bold text-slate-900 mb-1">Multi-Branch</h4>
-                    <p class="text-xs text-slate-500">Centralized admin panel to view all branches in real-time.</p>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 gsap-fade-up">
+          <h2 class="text-4xl font-bold text-slate-900">
+            Everything Else You Need
+          </h2>
+          <p class="text-slate-500 mt-2">
+            More power packed into every module.
+          </p>
         </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          id="feature-grid"
+        >
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">🔔</div>
+            <h4 class="font-bold text-slate-900 mb-1">SMS & WhatsApp</h4>
+            <p class="text-xs text-slate-500">
+              Auto-send welcome messages, due reminders, and auction notices.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">⚖️</div>
+            <h4 class="font-bold text-slate-900 mb-1">Auction Mgt</h4>
+            <p class="text-xs text-slate-500">
+              Track Auction Standing Loans and generate legal notices
+              automatically.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">👆</div>
+            <h4 class="font-bold text-slate-900 mb-1">Biometric Login</h4>
+            <p class="text-xs text-slate-500">
+              Secure staff access with Fingerprint and Face Recognition.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">☁️</div>
+            <h4 class="font-bold text-slate-900 mb-1">Cloud Backup</h4>
+            <p class="text-xs text-slate-500">
+              Your data is secured on AWS with daily automated backups.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">🔨</div>
+            <h4 class="font-bold text-slate-900 mb-1">Karigar Mgt</h4>
+            <p class="text-xs text-slate-500">
+              Track gold issued to artisans and calculate wastage accurately.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">📱</div>
+            <h4 class="font-bold text-slate-900 mb-1">Mobile App</h4>
+            <p class="text-xs text-slate-500">
+              Owners and customers get dedicated apps for tracking status.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">🔐</div>
+            <h4 class="font-bold text-slate-900 mb-1">Role Access</h4>
+            <p class="text-xs text-slate-500">
+              Define strict permissions for Managers, Cashiers, and Auditors.
+            </p>
+          </div>
+          <div
+            class="feature-grid-item p-6 rounded-2xl border border-stone-200 shadow-sm cursor-default"
+          >
+            <div class="text-3xl mb-3">🏢</div>
+            <h4 class="font-bold text-slate-900 mb-1">Multi-Branch</h4>
+            <p class="text-xs text-slate-500">
+              Centralized admin panel to view all branches in real-time.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="py-20 bg-stone-100 border-t border-stone-200 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 gsap-fade-up">
-            <h2 class="text-3xl font-bold text-slate-900 mb-6">Stop managing books. Start managing growth.</h2>
-            <div class="flex justify-center gap-4">
-                <a href="contact.html" class="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-10 rounded-lg shadow-lg hover:shadow-yellow-500/50 transition-all transform hover:-translate-y-1">
-                    Book a Demo
-                </a>
-            </div>
+    <section
+      class="py-20 bg-stone-100 border-t border-stone-200 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div
+        class="max-w-4xl mx-auto px-4 text-center relative z-10 gsap-fade-up"
+      >
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">
+          Stop managing books. Start managing growth.
+        </h2>
+        <div class="flex justify-center gap-4">
+          <a
+            href="contact.html"
+            class="bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-10 rounded-lg shadow-lg hover:shadow-yellow-500/50 transition-all transform hover:-translate-y-1"
+          >
+            Book a Demo
+          </a>
         </div>
+      </div>
     </section>
 
     <div id="app-footer"></div>
 
     <script src="components.js"></script>
     <script>
-        // --- 1. SMOOTH SCROLL ---
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-        });
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+      // --- 1. SMOOTH SCROLL ---
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+      });
+      function raf(time) {
+        lenis.raf(time);
         requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
 
-        // --- 2. GSAP SETUP ---
-        gsap.registerPlugin(ScrollTrigger);
+      // --- 2. GSAP SETUP ---
+      gsap.registerPlugin(ScrollTrigger);
 
-        // --- CUSTOM CURSOR ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-            gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power2.out" });
+      // --- CUSTOM CURSOR ---
+      const cursorDot = document.querySelector(".cursor-dot");
+      const cursorOutline = document.querySelector(".cursor-outline");
+      window.addEventListener("mousemove", (e) => {
+        gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+        gsap.to(cursorOutline, {
+          x: e.clientX,
+          y: e.clientY,
+          duration: 0.5,
+          ease: "power2.out",
         });
+      });
 
-        // --- 3. ANIMATIONS ---
-        
-        // Hero
-        const chars = document.querySelectorAll('.char');
-        gsap.to(chars, { y: 0, stagger: 0.05, duration: 0.8, ease: "back.out(1.7)", delay: 0.2 });
-        gsap.from('.gsap-fade-up', { y: 30, opacity: 0, stagger: 0.15, duration: 1, ease: "power2.out", delay: 0.6 });
+      // --- 3. ANIMATIONS ---
 
-        // 3D Tilt
-        function setupTilt(containerId, cardClass) {
-            const container = document.getElementById(containerId);
-            const card = container.querySelector(cardClass);
-            container.addEventListener('mousemove', (e) => {
-                const rect = container.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -10;
-                const rotateY = ((x - centerX) / centerX) * 10;
-                gsap.to(card, { rotationX: rotateX, rotationY: rotateY, duration: 0.5, ease: "power1.out" });
+      // Hero
+      const chars = document.querySelectorAll(".char");
+      gsap.to(chars, {
+        y: 0,
+        stagger: 0.05,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        delay: 0.2,
+      });
+      gsap.from(".gsap-fade-up", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.6,
+      });
+
+      // 3D Tilt
+      function setupTilt(containerId, cardClass) {
+        const container = document.getElementById(containerId);
+        const card = container.querySelector(cardClass);
+        container.addEventListener("mousemove", (e) => {
+          const rect = container.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty("--mouse-x", `${x}px`);
+          card.style.setProperty("--mouse-y", `${y}px`);
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -10;
+          const rotateY = ((x - centerX) / centerX) * 10;
+          gsap.to(card, {
+            rotationX: rotateX,
+            rotationY: rotateY,
+            duration: 0.5,
+            ease: "power1.out",
+          });
+        });
+        container.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            rotationX: 0,
+            rotationY: 0,
+            duration: 0.5,
+            ease: "power1.out",
+          });
+        });
+      }
+      setupTilt("lending-card-container", ".holo-card");
+      setupTilt("repledge-card-container", ".holo-card");
+
+      // Scroll Triggers
+      gsap.utils.toArray(".gsap-fade-right").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: "top 80%" },
+          x: -30,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      });
+      gsap.utils.toArray(".gsap-fade-left").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: "top 80%" },
+          x: 30,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      });
+      gsap.from(".gsap-fade-up-item", {
+        scrollTrigger: { trigger: "#repledge", start: "top 70%" },
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+      });
+      ScrollTrigger.create({
+        trigger: ".chart-bar",
+        start: "top 80%",
+        onEnter: () => {
+          document.querySelectorAll(".chart-bar").forEach((bar) => {
+            const h = bar.getAttribute("data-height");
+            gsap.to(bar, {
+              height: h,
+              duration: 1.5,
+              ease: "power4.out",
+              stagger: 0.1,
             });
-            container.addEventListener('mouseleave', () => {
-                gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.5, ease: "power1.out" });
-            });
-        }
-        setupTilt('lending-card-container', '.holo-card');
-        setupTilt('repledge-card-container', '.holo-card');
+          });
+        },
+      });
 
-        // Scroll Triggers
-        gsap.utils.toArray('.gsap-fade-right').forEach(el => {
-            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 80%" }, x: -30, opacity: 0, duration: 0.8, ease: "power2.out" });
-        });
-        gsap.utils.toArray('.gsap-fade-left').forEach(el => {
-            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 80%" }, x: 30, opacity: 0, duration: 0.8, ease: "power2.out" });
-        });
-        gsap.from('.gsap-fade-up-item', {
-            scrollTrigger: { trigger: '#repledge', start: "top 70%" }, y: 30, opacity: 0, stagger: 0.1, duration: 0.8, ease: "back.out(1.2)"
-        });
-        ScrollTrigger.create({
-            trigger: '.chart-bar',
-            start: 'top 80%',
-            onEnter: () => {
-                document.querySelectorAll('.chart-bar').forEach(bar => {
-                    const h = bar.getAttribute('data-height');
-                    gsap.to(bar, { height: h, duration: 1.5, ease: "power4.out", stagger: 0.1 });
-                });
-            }
-        });
+      // --- GRID EXPLOSION ANIMATION (SMOOTH & SLOW) ---
+      gsap.set(".feature-grid-item", {
+        opacity: 0,
+        scale: 0.5,
+        y: 100,
+        x: (i) => (i % 2 === 0 ? -100 : 100) + Math.random() * 40, // Wider separation
+        rotation: (i) => Math.random() * 30 - 15,
+      });
 
-        // --- GRID EXPLOSION ANIMATION (SMOOTH & SLOW) ---
-        gsap.set(".feature-grid-item", {
-            opacity: 0,
-            scale: 0.5,
-            y: 100, 
-            x: (i) => (i % 2 === 0 ? -100 : 100) + Math.random() * 40, // Wider separation
-            rotation: (i) => Math.random() * 30 - 15
-        });
-
-        gsap.to(".feature-grid-item", {
-            scrollTrigger: {
-                trigger: "#feature-grid",
-                start: "top 85%",
-                end: "bottom 50%", // MUCH longer distance to make it slower
-                scrub: 3,          // Heavy weight for smoothness
-            },
-            x: 0,
-            y: 0,
-            rotation: 0,
-            scale: 1,
-            opacity: 1,
-            stagger: 0.05, 
-            ease: "back.out(1.7)" // The "Bounce/Pop" without jerkiness
-        });
-
+      gsap.to(".feature-grid-item", {
+        scrollTrigger: {
+          trigger: "#feature-grid",
+          start: "top 85%",
+          end: "bottom 50%", // MUCH longer distance to make it slower
+          scrub: 3, // Heavy weight for smoothness
+        },
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        opacity: 1,
+        stagger: 0.05,
+        ease: "back.out(1.7)", // The "Bounce/Pop" without jerkiness
+      });
     </script>
-</body>
+  </body>
 </html>

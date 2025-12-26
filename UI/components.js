@@ -16,11 +16,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-8">
-              <a href="index.html" class="${isActive('index.html')} px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-              <a href="about.html" class="${isActive('about.html')} px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-              <a href="features.html" class="${isActive('features.html')} px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
-              <a href="pricing.html" class="${isActive('pricing.html')} px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
-              <a href="blog.html" class="${isActive('blog.html')} px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
+              <a href="index.html" class="${isActive(
+                "index.html"
+              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+              <a href="about.html" class="${isActive(
+                "about.html"
+              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+              <a href="features.html" class="${isActive(
+                "features.html"
+              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
+              <a href="pricing.html" class="${isActive(
+                "pricing.html"
+              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
+              <a href="blog.html" class="${isActive(
+                "blog.html"
+              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
             </div>
           </div>
 
@@ -117,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper to highlight active link (Updated colors for light theme)
   // Uses yellow-600 for active state on white background
   function isActive(page) {
-    return currentPath.includes(page) 
-      ? "text-yellow-600 font-bold" 
+    return currentPath.includes(page)
+      ? "text-yellow-600 font-bold"
       : "text-slate-600 hover:text-yellow-600";
   }
 });
