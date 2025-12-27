@@ -1,7 +1,11 @@
+// This is the standard js file for header and footer, which can be called in all Html pages
+// Created by : Ranjith Kumar
+// Date       : 27/12/2025
+
 document.addEventListener("DOMContentLoaded", function () {
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
 
-  // --- 1. Navbar Component (Light Theme) ---
+  // --- 1. Navbar Component (Light Theme) - Sticky header with logo, navigation links, and mobile menu toggle
   const navbarHTML = `
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 transition-all duration-300 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,20 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-8">
               <a href="index.html" class="${isActive(
-                "index.html"
-              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+    "index.html"
+  )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
               <a href="about.html" class="${isActive(
-                "about.html"
-              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+    "about.html"
+  )} px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
               <a href="features.html" class="${isActive(
-                "features.html"
-              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
+    "features.html"
+  )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
               <a href="pricing.html" class="${isActive(
-                "pricing.html"
-              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
+    "pricing.html"
+  )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</a>
               <a href="blog.html" class="${isActive(
-                "blog.html"
-              )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
+    "blog.html"
+  )} px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
             </div>
           </div>
 
@@ -61,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </nav>
   `;
 
-  // --- 2. Footer Component (Light Theme) ---
+  // --- 2. Footer Component (Light Theme) - 4-column layout with links and contact info
   const footerHTML = `
     <footer class="bg-stone-100 text-slate-600 pt-16 pb-8 border-t border-stone-200 mt-auto">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -108,10 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <div class="border-t border-stone-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
           <p>&copy; 2025 FinGold SaaS. All rights reserved.</p>
-          <div class="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" class="hover:text-slate-900 transition-colors">Privacy Policy</a>
-              <a href="#" class="hover:text-slate-900 transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>
@@ -127,13 +127,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper to highlight active link (Updated colors for light theme)
   // Uses yellow-600 for active state on white background
   function isActive(page) {
+    if (page === "blog.html" && currentPath.includes("blog-details.html")) {
+      return "text-yellow-600 font-bold";
+    }
     return currentPath.includes(page)
       ? "text-yellow-600 font-bold"
       : "text-slate-600 hover:text-yellow-600";
   }
 });
 
-// Mobile Menu Toggle Logic
+// Mobile Menu Toggle Logic - Controls visibility of the hamburger menu on small screens
 function toggleMenu() {
   const menu = document.getElementById("mobile-menu");
   if (menu) {

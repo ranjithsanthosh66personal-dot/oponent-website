@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Details - FinGold</title>
+
+  <script src="assets/libs/tailwind/tailwindcss.js"></script>
+  <link href="assets/css/fonts_blog_details.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+
+</head>
+<!-- Body - Article reading layout -->
+
+<body class="bg-gray-50 text-slate-800 flex flex-col min-h-screen pt-20">
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- App Header - Loaded dynamically -->
+  <div id="app-header"></div>
+
+  <!-- Since this is a sub-page, we might need a simplified header or same header -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+    <!-- Back Button -->
+    <a href="blog.html" class="inline-flex items-center text-slate-500 hover:text-yellow-600 mb-8 transition-colors">
+      <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Blog
+    </a>
+
+    <!-- Blog Content - Dynamic article container populated by blog-data.js -->
+    <article class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden min-h-[400px]">
+      <div class="p-8 md:p-12">
+        <header class="mb-10 text-center">
+          <span id="post-category"
+            class="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold uppercase tracking-wider mb-4">Category</span>
+          <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+            Loading Title...
+          </h1>
+          <div class="flex items-center justify-center gap-4 text-slate-500 text-sm">
+            <span>By FinGold Editorial</span>
+            <span>•</span>
+            <span id="post-date">...</span>
+          </div>
+        </header>
+
+        <div class="mb-12 rounded-xl overflow-hidden shadow-lg border border-slate-100">
+          <img id="post-image" src="" alt="Blog Cover" class="w-full h-96 object-cover" />
+        </div>
+
+        <div id="post-content" class="prose prose-lg prose-slate mx-auto text-slate-600 leading-relaxed">
+          <p>Loading content...</p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <!-- Footer - Loaded dynamically -->
+  <div id="app-footer"></div>
+
+  <script src="assets/libs/gsap.min.js"></script>
+  <script src="assets/libs/ScrollTrigger.min.js"></script>
+  <script src="assets/libs/lenis.min.js"></script>
+
+  <!-- Data Script - Contains blog post content array -->
+  <script src="blog-data.js"></script>
+  <script src="components.js"></script>
+
+  
+  <script src="assets/script.js"></script>
+
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            tamil: ['"Noto Sans Tamil"', "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+</body>
+
+</html>

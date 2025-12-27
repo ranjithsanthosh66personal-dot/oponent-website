@@ -1,242 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - FinGold</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - FinGold</title>
+  
+  <script src="assets/libs/tailwind/tailwindcss.js"></script>
+  <link href="assets/css/fonts_inter.css" rel="stylesheet" />
+  <link href="assets/css/fonts_blog_details.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+</head>
+<!-- Body - Standard layout for blog listing -->
+
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen pt-20">
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- App Header - Loaded dynamically -->
+  <div id="app-header"></div>
+
+  <!-- Blog Header - Title and subtitle for the blog section -->
+  <section class="py-20 bg-white border-b border-stone-200 relative overflow-hidden">
+    <div class="absolute inset-0 bg-yellow-50 opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
+        Latest <span class="text-yellow-600">Insights</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        Trends, Regulations, and Technology in Gold Financing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Grid - Grid of recent blog posts with thumbnails and categories -->
+  <section class="py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Post 1 -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer border border-stone-100">
+          <div class="overflow-hidden h-48 relative">
+            <img src="assets/images/blog_tamil.jpg" alt="HUID"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-4 left-4 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              REGULATION
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center text-sm text-slate-400 mb-4">
+              <span>Oct 12, 2024</span>
+              <span class="mx-2">•</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors">
+              <a href="blog-details.html?id=1">Understanding New HUID Regulations</a>
+            </h3>
+            <p class="text-slate-600 mb-6 line-clamp-3">
+              How the new Hallmark Unique Identification (HUID) norms impact pawnbrokers and what you need to do to
+              comply.
+            </p>
+            <a href="blog-details.html?id=1"
+              class="inline-flex items-center font-bold text-yellow-600 hover:text-yellow-700">
+              Read More
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer border border-stone-100">
+          <div class="overflow-hidden h-48 relative">
+            <img src="assets/images/blog_tamil.jpg" alt="Billing"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              TECHNOLOGY
+            </div>
+          </div>
+          
+          <div class="p-8">
+            <div class="flex items-center text-sm text-slate-400 mb-4">
+              <span>Nov 05, 2024</span>
+              <span class="mx-2">•</span>
+              <span>4 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+              Why Digital Invoicing is Mandatory?
+            </h3>
+            <p class="text-slate-600 mb-6 line-clamp-3">
+              GST compliance is getting stricter. Discover how switching to cloud ERP can save you from penalties.
+            </p>
+            <a href="blog-details.html?id=2" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700">
+              Read More
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div> </article>
+
+      <!-- Post 3 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer border border-stone-100">
+        <div class="overflow-hidden h-48 relative">
+          <img src="assets/images/blog_tamil.jpg" alt="Trends"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute top-4 left-4 bg-stone-800 text-white text-xs font-bold px-3 py-1 rounded-full">
+            MARKET
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center text-sm text-slate-400 mb-4">
+            <span>Dec 01, 2024</span>
+            <span class="mx-2">•</span>
+            <span>7 min read</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-stone-600 transition-colors">
+            Gold Market Trends for 2025
+          </h3>
+          <p class="text-slate-600 mb-6 line-clamp-3">
+            Analysts predict a volatile year ahead. Here is what lending institutions should prepare for.
+          </p>
+          <a href="blog-details.html?id=3"
+            class="pt-5 inline-flex items-center font-bold text-slate-900 hover:text-slate-700">
+            Read More
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+    </div>
+  </section>
+
+  <!-- Footer - Loaded dynamically -->
+  <div id="app-footer"></div>
+  <script src="assets/libs/gsap.min.js"></script>
+  <script src="assets/libs/ScrollTrigger.min.js"></script>
+  <script src="assets/libs/lenis.min.js"></script>
+
+  <script src="components.js"></script>
+
+  <script src="assets/script.js"></script>
+
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              gold: {
-                500: "#EAB308",
-              },
-            },
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
           },
         },
-      };
-    </script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        cursor: none; /* 1. Hide default cursor */
-      }
+      },
+    };
+  </script>
 
-      /* 2. Cursor Styles */
-      .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #eab308; /* Gold Color */
-      }
+</body>
 
-      .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 2px solid #eab308;
-        background-color: rgba(234, 179, 8, 0.1);
-        opacity: 0.5;
-      }
-
-      .cursor-dot,
-      .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none; /* Allows clicking through the custom cursor */
-      }
-
-      /* Hover State (When hovering over links/buttons) */
-      .cursor-hover {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 0.8;
-        background-color: rgba(234, 179, 8, 0.2);
-        border-color: transparent;
-      }
-
-      /* Disable custom cursor on mobile/touch devices */
-      @media (hover: none) and (pointer: coarse) {
-        body {
-          cursor: auto;
-        }
-        .cursor-dot,
-        .cursor-outline {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-slate-50 flex flex-col min-h-screen pt-20">
-    <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
-
-    <div id="app-header"></div>
-
-    <section class="py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h1 class="text-4xl font-bold text-slate-900">Industry Insights</h1>
-          <p class="mt-4 text-xl text-slate-500">
-            Latest news on Hallmarking, GST, and Market Trends.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition group"
-          >
-            <div class="overflow-hidden">
-              <img
-                src="https://placehold.co/400x250/f1c40f/1e293b?text=HUID+Regulations"
-                alt="HUID"
-                class="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
-              />
-            </div>
-            <div class="p-6">
-              <span class="text-xs text-yellow-600 font-bold uppercase"
-                >Compliance</span
-              >
-              <h3 class="mt-2 text-xl font-bold text-slate-900">
-                Understanding New HUID Hallmarking Rules
-              </h3>
-              <p class="mt-2 text-slate-500 text-sm">
-                A complete guide for retailers on how to manage stock with the
-                new 6-digit HUID code.
-              </p>
-              <a
-                href="blog/blog-details.html?id=1"
-                class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600"
-                data-cursor="hover"
-                >Read more &rarr;</a
-              >
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition group"
-          >
-            <div class="overflow-hidden">
-              <img
-                src="https://placehold.co/400x250/1e293b/FFF?text=Digital+Invoicing"
-                alt="Billing"
-                class="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
-              />
-            </div>
-            <div class="p-6">
-              <span class="text-xs text-blue-600 font-bold uppercase"
-                >Technology</span
-              >
-              <h3 class="mt-2 text-xl font-bold text-slate-900">
-                Why Handwritten Bills are Costing You Money
-              </h3>
-              <p class="mt-2 text-slate-500 text-sm">
-                Digital invoicing isn't just about speed; it's about eliminating
-                calculation errors and theft.
-              </p>
-              <a
-                href="blog/blog-details.html?id=2"
-                class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600"
-                data-cursor="hover"
-                >Read more &rarr;</a
-              >
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition group"
-          >
-            <div class="overflow-hidden">
-              <img
-                src="https://placehold.co/400x250/e2e8f0/1e293b?text=Gold+Trends+2025"
-                alt="Trends"
-                class="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
-              />
-            </div>
-            <div class="p-6">
-              <span class="text-xs text-green-600 font-bold uppercase"
-                >சந்தை</span
-              >
-              <h3 class="mt-2 text-xl font-bold text-slate-900">
-                2025 ஆம் ஆண்டின் முதல் காலாண்டிற்கான தங்க விலை போக்குகள்
-              </h3>
-              <p class="mt-2 text-slate-500 text-sm">
-                உலகளாவிய புவிசார் அரசியல் நிகழ்வுகள் உள்ளூர் பொன் விலைகளை
-                எவ்வாறு பாதிக்கின்றன என்பது குறித்த நிபுணர் பகுப்பாய்வு.
-              </p>
-              <a
-                href="blog/blog-details.html?id=3"
-                class="mt-4 inline-block text-slate-900 font-semibold hover:text-yellow-600"
-                data-cursor="hover"
-                >மேலும் படிக்கவும் &rarr;</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div id="app-footer"></div>
-    <script src="components.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const cursorDot = document.querySelector("[data-cursor-dot]");
-        const cursorOutline = document.querySelector("[data-cursor-outline]");
-
-        // Select all interactive elements (links, buttons)
-        const hoverElements = document.querySelectorAll(
-          "a, button, [data-cursor='hover']"
-        );
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let outlineX = 0;
-        let outlineY = 0;
-
-        // Track mouse movement
-        document.addEventListener("mousemove", (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          // Dot follows instantly
-          cursorDot.style.top = `${mouseY}px`;
-          cursorDot.style.left = `${mouseX}px`;
-        });
-
-        // Outline follows with delay (animation loop)
-        function animateCursor() {
-          let distX = mouseX - outlineX;
-          let distY = mouseY - outlineY;
-
-          // 0.15 controls the speed (lower is slower/smoother)
-          outlineX += distX * 0.15;
-          outlineY += distY * 0.15;
-
-          cursorOutline.style.top = `${outlineY}px`;
-          cursorOutline.style.left = `${outlineX}px`;
-
-          requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Add hover effect listeners
-        hoverElements.forEach((el) => {
-          el.addEventListener("mouseenter", () => {
-            cursorOutline.classList.add("cursor-hover");
-          });
-          el.addEventListener("mouseleave", () => {
-            cursorOutline.classList.remove("cursor-hover");
-          });
-        });
-      });
-    </script>
-  </body>
 </html>

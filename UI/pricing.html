@@ -1,849 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pricing Plans - FinGold ERP</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing Plans - FinGold ERP</title>
+  
+  <script src="assets/libs/tailwind/tailwindcss.js"></script>
+  <link href="assets/css/fonts.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+
+</head>
+
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen pt-20 overflow-x-hidden">
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- App Header - Loaded dynamically -->
+  <div id="app-header"></div>
+
+  <!-- Hero Section - Pricing introduction with gold aesthetic background -->
+  <section class="relative py-24 lg:py-32 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-grid-pattern opacity-30 z-0 mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)">
+    </div>
+    <div
+      class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-300/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 mix-blend-multiply">
+    </div>
+    <div
+      class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3">
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span
+        class="inline-block py-1.5 px-4 rounded-full bg-gold-50 border border-gold-200/50 text-gold-800 text-sm font-bold tracking-wider mb-6 reveal-hidden shadow-sm">
+        TRANSPARENT PRICING
+      </span>
+      <h1
+        class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight reveal-hidden delay-100 tracking-tight">
+        Invest in the Future of <br />
+        <span class="text-gold-gradient-pricing pb-2 relative">Your Gold Business</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed reveal-hidden delay-200">
+        Choose a lifetime license that grows with you. Secure, scalable, and
+        built specifically for modern gold financing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards - 3 Tier pricing structure (Standard, Best Value, Corporate) -->
+<section class="relative z-20 -mt-16 pb-24 font-sans">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
+      
+      <div class="group relative bg-white rounded-3xl border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-2 flex flex-col">
+        <div class="p-8 flex flex-col h-full">
+          <div class="mb-6">
+            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Standard</h3>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Professional</h2>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-extrabold text-slate-900 tracking-tight">₹20,999</span>
+              <span class="text-slate-400 font-medium">/ lifetime</span>
+            </div>
+            <p class="text-slate-500 text-sm mt-4">Complete solution for single-branch setups.</p>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 text-xs font-bold text-slate-600 mb-8 w-full justify-between">
+            <span>AMC: ₹5,999 / year</span>
+            <div class="group/info relative cursor-help">
+              <svg class="w-4 h-4 text-slate-400 hover:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8 flex-grow">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Accounts & Pawn Broking</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Tally Export & Repledge</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Bio-Metric Integration</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Aadhar Integration</span>
+            </li>
+          </ul>
+
+          <a href="contact.html" class="block w-full py-3.5 px-6 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 font-bold text-center hover:bg-slate-100 hover:border-slate-300 transition-all">
+            Select Professional
+          </a>
+        </div>
+      </div>
+
+      <div class="group relative bg-slate-900 rounded-[2rem] shadow-2xl transform lg:-translate-y-6 lg:scale-105 z-10 border border-yellow-500/30 overflow-hidden flex flex-col">
+        
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-yellow-500/20 blur-3xl rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-yellow-600/10 blur-3xl rounded-full pointer-events-none"></div>
+
+        <div class="p-8 lg:p-10 relative flex flex-col h-full">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-500 to-yellow-400 text-slate-900 text-[10px] font-black px-4 py-1 rounded-b-lg uppercase tracking-widest shadow-lg">
+            Best Value
+          </div>
+
+          <div class="mb-8 mt-2">
+            <h3 class="text-sm font-bold text-yellow-400 uppercase tracking-widest mb-4">Power User</h3>
+            <h2 class="text-3xl font-bold text-white mb-2">Enterprise</h2>
+            <div class="flex items-baseline gap-1">
+              <span class="text-5xl font-black text-white tracking-tight">₹29,999</span>
+              <span class="text-slate-400 font-medium">/ lifetime</span>
+            </div>
+             <p class="text-slate-400 text-sm mt-3">Advanced security & priority support.</p>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/50 border border-white/10 text-sm font-bold text-slate-300 mb-8 w-full justify-between backdrop-blur-sm">
+            <span>AMC: ₹5,999 / year</span>
+            <div class="group/info relative cursor-help">
+               <svg class="w-5 h-5 text-slate-500 hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+               </svg>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-10 flex-grow">
+            <li class="flex items-center gap-3">
+              <div class="bg-yellow-500/20 p-1 rounded-full">
+                <svg class="w-4 h-4 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <span class="text-white font-medium">Everything in Professional</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="bg-yellow-500/20 p-1 rounded-full">
+                <svg class="w-4 h-4 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <span class="text-white font-medium">Priority 24/7 Support</span>
+            </li>
+            
+            <div class="my-6 pt-6 border-t border-white/10 space-y-4">
+              <li class="flex items-center gap-3">
+                 <div class="bg-green-500/20 p-1 rounded-full">
+                  <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <span class="text-white font-bold">Bio-Metric Device Included</span>
+              </li>
+               <li class="flex items-center gap-3">
+                 <div class="bg-green-500/20 p-1 rounded-full">
+                  <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <span class="text-white font-bold">Unlimited User Logins</span>
+              </li>
+            </div>
+          </ul>
+
+          <a href="contact.html" class="block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 bg-[length:200%_auto] hover:bg-right text-slate-900 font-extrabold text-center shadow-lg shadow-yellow-500/25 hover:shadow-yellow-500/40 hover:-translate-y-1 transition-all duration-300">
+            Get Enterprise
+          </a>
+        </div>
+      </div>
+
+      <div class="group relative bg-slate-50 rounded-3xl border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-2 flex flex-col">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-[4rem]"></div>
+        
+        <div class="p-8 flex flex-col h-full">
+           <div class="mb-6">
+            <h3 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">Corporate</h3>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">NBFC & Multi-Branch</h2>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-extrabold text-slate-900 tracking-tight">Custom</span>
+            </div>
+             <p class="text-slate-500 text-sm mt-4">Tailored architecture for registered NBFCs and large chains.</p>
+          </div>
+
+          <div class="w-12 h-1 bg-blue-600 rounded-full mb-8"></div>
+
+          <ul class="space-y-4 mb-8 flex-grow">
+             <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              <span class="text-slate-700 text-sm font-bold">Centralized Head Office Control</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="text-slate-700 text-sm font-medium">RBI Compliance Reporting</span>
+            </li>
+             <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Custom API Access</span>
+            </li>
+             <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              <span class="text-slate-700 text-sm font-medium">Dedicated Audit Server</span>
+            </li>
+          </ul>
+
+          <a href="contact.html" class="block w-full py-3.5 px-6 rounded-xl border-2 border-blue-600 text-blue-700 font-bold text-center hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg shadow-blue-200">
+            Talk to Sales
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ - Accordion style frequently asked questions -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-4xl font-bold text-slate-900 text-center mb-16 reveal-hidden tracking-tight">
+        Common Questions
+      </h2>
+
+      <div class="space-y-6 reveal-hidden delay-100">
+        <details
+          class="group bg-slate-50 hover:bg-slate-100 p-6 rounded-2xl border border-slate-200 transition-all duration-300 cursor-pointer [&_summary::-webkit-details-marker]:hidden open:bg-white open:shadow-md open:border-gold-200"
+          data-cursor="hover">
+          <summary class="flex justify-between items-center font-bold text-lg text-slate-900 list-none select-none">
+            <span>Why is there a Yearly Subscription charge?</span>
+            <span
+              class="transition-transform duration-300 group-open:rotate-180 text-gold-500 bg-gold-100 p-2 rounded-full">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="text-slate-600 mt-6 text-base leading-relaxed border-t border-slate-100 pt-6">
+            <p class="mb-4">
+              The initial cost covers the
+              <strong>Lifetime Software License</strong>. The recurring yearly
+              fee of ₹6,000 is strictly for essential ongoing services:
+            </p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Cloud Server Maintenance (AWS)
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Automated Daily Backups
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Technical Support
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Software Updates & Patches
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <details
+          class="group bg-slate-50 hover:bg-slate-100 p-6 rounded-2xl border border-slate-200 transition-all duration-300 cursor-pointer [&_summary::-webkit-details-marker]:hidden open:bg-white open:shadow-md open:border-gold-200"
+          data-cursor="hover">
+          <summary class="flex justify-between items-center font-bold text-lg text-slate-900 list-none select-none">
+            <span>Do I need to buy a biometric device separately?</span>
+            <span
+              class="transition-transform duration-300 group-open:rotate-180 text-gold-500 bg-gold-100 p-2 rounded-full">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <p class="text-slate-600 mt-6 text-base leading-relaxed border-t border-slate-100 pt-6">
+            Yes. The software is fully compatible with industry-standard
+            devices like <strong>Mantra or Morpho</strong>. However, the
+            physical hardware device must be purchased separately from
+            electronics vendors. We are happy to provide recommendations on
+            compatible models.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Loaded dynamically -->
+  <div id="app-footer"></div>
+
+  <script src="assets/libs/gsap.min.js"></script>
+  <script src="assets/libs/ScrollTrigger.min.js"></script>
+  <script src="assets/libs/lenis.min.js"></script>
+
+  <script src="components.js"></script>
+
+  <script src="assets/script.js"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', "sans-serif"],
+          },
+          colors: {
+            gold: {
+              300: "#FDE047",
+              400: "#FACC15",
+              500: "#EAB308",
+              600: "#CA8A04",
+              700: "#A16207",
+              800: "#854D0E",
             },
-            colors: {
-              gold: {
-                300: "#FDE047",
-                400: "#FACC15",
-                500: "#EAB308",
-                600: "#CA8A04",
-                700: "#A16207",
-                800: "#854D0E",
-              },
-              slate: {
-                850: "#172033" /* Custom darker slate */,
-                950: "#0b1121" /* Custom deepest slate */,
-              },
+            slate: {
+              850: "#172033" /* Custom darker slate */,
+              950: "#0b1121" /* Custom deepest slate */,
             },
-            boxShadow: {
-              "gold-glow": "0 20px 40px -15px rgba(234, 179, 8, 0.3)",
-              "inner-light": "inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)",
-            },
-            backgroundImage: {
-              noise:
-                "url('data:image/svg+xml,%3Csvg viewBox=%270 0 400 400%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noiseFilter%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.8%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url%28%23noiseFilter%29%27 opacity=%270.05%27/%3E%3C/svg%3E')",
-            },
+          },
+          boxShadow: {
+            "gold-glow": "0 20px 40px -15px rgba(234, 179, 8, 0.3)",
+            "inner-light": "inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)",
+          },
+          backgroundImage: {
+            noise:
+              "url('data:image/svg+xml,%3Csvg viewBox=%270 0 400 400%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noiseFilter%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.8%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url%28%23noiseFilter%29%27 opacity=%270.05%27/%3E%3C/svg%3E')",
           },
         },
-      };
-    </script>
-    <style>
-      body {
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        cursor: none; /* Hide default cursor */
-      }
+      },
+    };
+  </script>
+</body>
 
-      /* Re-enable default cursor for touch devices otherwise it's unusable */
-      @media (hover: none) and (pointer: coarse) {
-        body {
-          cursor: auto;
-        }
-        .cursor-dot,
-        .cursor-outline {
-          display: none !important;
-        }
-      }
-
-      /* --- Custom Cursor Styles --- */
-      .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #eab308; /* Gold 500 */
-      }
-
-      .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 2px solid #eab308; /* Gold 500 */
-        opacity: 0.5;
-        transition: transform 0.2s ease-out, opacity 0.2s ease-out,
-          width 0.2s ease-out, height 0.2s ease-out;
-      }
-
-      .cursor-dot,
-      .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-      }
-
-      /* Hover state for the cursor outline */
-      .cursor-hover {
-        width: 60px;
-        height: 60px;
-        opacity: 0.3;
-        background-color: rgba(234, 179, 8, 0.1);
-      }
-
-      /* --- existing styles --- */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
-
-      .reveal-hidden {
-        opacity: 0;
-        transform: translateY(40px) scale(0.98);
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .reveal-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .delay-100 {
-        transition-delay: 100ms;
-      }
-      .delay-200 {
-        transition-delay: 200ms;
-      }
-      .delay-300 {
-        transition-delay: 300ms;
-      }
-
-      /* Richer Gold Text Gradient */
-      .text-gold-gradient {
-        background: linear-gradient(
-          135deg,
-          #ca8a04 0%,
-          #fde047 50%,
-          #ca8a04 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% auto;
-        animation: shine 6s linear infinite;
-        text-shadow: 0px 2px 10px rgba(234, 179, 8, 0.2);
-      }
-
-      @keyframes shine {
-        to {
-          background-position: 200% center;
-        }
-      }
-
-      .bg-grid-pattern {
-        background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-        background-size: 32px 32px;
-      }
-
-      /* Premium Card Hover Lift */
-      .hover-lift {
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.3s ease;
-      }
-      .hover-lift:hover {
-        transform: translateY(-8px);
-      }
-    </style>
-  </head>
-  <body
-    class="bg-slate-50 text-slate-900 flex flex-col min-h-screen pt-20 overflow-x-hidden"
-  >
-    <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
-
-    <div id="app-header"></div>
-
-    <section class="relative py-24 lg:py-32 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-grid-pattern opacity-30 z-0 mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)"
-      ></div>
-      <div
-        class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-300/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 mix-blend-multiply"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3"
-      ></div>
-
-      <div
-        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-      >
-        <span
-          class="inline-block py-1.5 px-4 rounded-full bg-gold-50 border border-gold-200/50 text-gold-800 text-sm font-bold tracking-wider mb-6 reveal-hidden shadow-sm"
-        >
-          TRANSPARENT PRICING
-        </span>
-        <h1
-          class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight reveal-hidden delay-100 tracking-tight"
-        >
-          Invest in the Future of <br />
-          <span class="text-gold-gradient pb-2 relative"
-            >Your Gold Business</span
-          >
-        </h1>
-        <p
-          class="text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed reveal-hidden delay-200"
-        >
-          Choose a lifetime license that grows with you. Secure, scalable, and
-          built specifically for modern gold financing.
-        </p>
-      </div>
-    </section>
-
-    <section class="relative z-20 -mt-16 pb-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-5xl mx-auto"
-        >
-          <div
-            class="group relative bg-white/80 backdrop-blur-md rounded-[2rem] border border-slate-200/80 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden reveal-hidden delay-100 hover-lift"
-          >
-            <div
-              class="absolute inset-0 rounded-[2rem] shadow-inner-light pointer-events-none"
-            ></div>
-
-            <div class="p-8 lg:p-10 relative z-10">
-              <div class="flex justify-between items-start mb-8">
-                <div>
-                  <h3
-                    class="text-lg font-bold text-slate-500 uppercase tracking-widest mb-2"
-                  >
-                    Professional
-                  </h3>
-                  <div class="flex items-baseline gap-1">
-                    <span
-                      class="text-5xl font-extrabold text-slate-900 tracking-tight"
-                      >₹20,999</span
-                    >
-                    <span class="text-slate-500 font-semibold">/ lifetime</span>
-                  </div>
-                </div>
-                <div class="bg-slate-100 p-4 rounded-2xl shadow-sm">
-                  <svg
-                    class="w-8 h-8 text-slate-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-sm font-bold text-slate-600 mb-10"
-              >
-                <span>AMC: ₹5,999 / year</span>
-                <div
-                  class="group/info relative cursor-help"
-                  data-cursor="hover"
-                >
-                  <svg
-                    class="w-5 h-5 text-slate-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span
-                    class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-52 bg-slate-800 text-white text-center text-xs font-medium p-3 rounded-lg shadow-xl opacity-0 group-hover/info:opacity-100 transition pointer-events-none"
-                    >Includes Cloud Server, Daily Backup & Technical
-                    Support</span
-                  >
-                </div>
-              </div>
-
-              <ul class="space-y-4 mb-10">
-                <li class="flex items-start gap-3.5">
-                  <div class="bg-green-100 p-0.5 rounded-full shrink-0 mt-0.5">
-                    <svg
-                      class="w-5 h-5 text-green-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <span class="text-slate-700 font-medium"
-                    >Pawn Broking Module</span
-                  >
-                </li>
-                <li class="flex items-start gap-3.5">
-                  <div class="bg-green-100 p-0.5 rounded-full shrink-0 mt-0.5">
-                    <svg
-                      class="w-5 h-5 text-green-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <span class="text-slate-700 font-medium"
-                    >Accounts Module</span
-                  >
-                </li>
-                <li class="flex items-start gap-3.5">
-                  <div class="bg-green-100 p-0.5 rounded-full shrink-0 mt-0.5">
-                    <svg
-                      class="w-5 h-5 text-green-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <span class="text-slate-700 font-medium"
-                    >Image Capture & SMS Plugin</span
-                  >
-                </li>
-                <li class="flex items-start gap-3.5">
-                  <div class="bg-green-100 p-0.5 rounded-full shrink-0 mt-0.5">
-                    <svg
-                      class="w-5 h-5 text-green-600"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <span class="text-slate-700 font-medium"
-                    >Tally Export & Repledge</span
-                  >
-                </li>
-
-                <li
-                  class="flex items-start gap-3.5 opacity-60 pt-4 border-t border-slate-100"
-                >
-                  <svg
-                    class="w-5 h-5 text-slate-400 mt-0.5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                  <span class="text-slate-500 font-medium"
-                    >Bio-Metric Integration</span
-                  >
-                </li>
-                <li class="flex items-start gap-3.5 opacity-60">
-                  <svg
-                    class="w-5 h-5 text-slate-400 mt-0.5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                  <span class="text-slate-500 font-medium"
-                    >Aadhar Integration</span
-                  >
-                </li>
-              </ul>
-
-              <a
-                href="contact.html"
-                class="block w-full py-4 px-6 rounded-xl border-2 border-slate-300 text-slate-700 font-extrabold text-center hover:border-slate-900 hover:text-slate-900 hover:bg-slate-50 transition-all duration-300"
-                data-cursor="hover"
-              >
-                Select Professional
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="group relative bg-slate-900 rounded-[2rem] shadow-gold-glow transform lg:-translate-y-8 transition-all duration-500 hover:-translate-y-10 reveal-hidden delay-200 border border-white/10 overflow-hidden"
-          >
-            <div
-              class="absolute -inset-px bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-300 rounded-[2rem] blur-md opacity-30 group-hover:opacity-50 transition duration-500"
-            ></div>
-            <div
-              class="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none z-0"
-            ></div>
-
-            <div
-              class="relative bg-slate-850/90 backdrop-blur-xl rounded-[2rem] p-8 lg:p-10 h-full flex flex-col z-10"
-            >
-              <div
-                class="absolute top-5 right-5 bg-gradient-to-r from-gold-500 to-gold-400 text-slate-900 text-xs font-extrabold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg"
-              >
-                Most Popular
-              </div>
-
-              <div class="flex justify-between items-start mb-8">
-                <div>
-                  <h3
-                    class="text-lg font-bold text-gold-400 uppercase tracking-widest mb-2"
-                  >
-                    Enterprise
-                  </h3>
-                  <div class="flex items-baseline gap-1">
-                    <span
-                      class="text-5xl font-extrabold text-white tracking-tight"
-                      >₹29,999</span
-                    >
-                    <span class="text-slate-400 font-semibold">/ lifetime</span>
-                  </div>
-                </div>
-                <div
-                  class="bg-slate-800 p-4 rounded-2xl border border-white/10 shadow-inner"
-                >
-                  <svg
-                    class="w-8 h-8 text-gold-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950/50 border border-white/10 text-sm font-bold text-slate-300 mb-10"
-              >
-                <span>AMC: ₹5,999 / year</span>
-                <div
-                  class="group/info relative cursor-help"
-                  data-cursor="hover"
-                >
-                  <svg
-                    class="w-5 h-5 text-slate-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span
-                    class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-52 bg-white text-slate-900 text-center text-xs font-medium p-3 rounded-lg shadow-xl opacity-0 group-hover/info:opacity-100 transition pointer-events-none"
-                    >Includes Cloud Server, Daily Backup & Technical
-                    Support</span
-                  >
-                </div>
-              </div>
-
-              <div class="flex-grow">
-                <ul class="space-y-4 mb-10">
-                  <li class="flex items-start gap-3.5">
-                    <div
-                      class="bg-gold-500/20 p-0.5 rounded-full shrink-0 mt-0.5"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gold-400"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <span class="text-white font-medium"
-                      >All <strong>Professional</strong> Features</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-3.5">
-                    <div
-                      class="bg-gold-500/20 p-0.5 rounded-full shrink-0 mt-0.5"
-                    >
-                      <svg
-                        class="w-5 h-5 text-gold-400"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <span class="text-white font-medium"
-                      >Priority Technical Support</span
-                    >
-                  </li>
-
-                  <div
-                    class="my-6 py-6 border-t border-b border-white/10 space-y-4 bg-white/5 -mx-8 px-8"
-                  >
-                    <li class="flex items-start gap-3.5">
-                      <div class="bg-green-500/20 p-1 rounded-full shrink-0">
-                        <svg
-                          class="w-4 h-4 text-green-400"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                      <span class="text-white font-bold tracking-wide"
-                        >Bio-Metric Integration</span
-                      >
-                    </li>
-                    <li class="flex items-start gap-3.5">
-                      <div class="bg-green-500/20 p-1 rounded-full shrink-0">
-                        <svg
-                          class="w-4 h-4 text-green-400"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                      <span class="text-white font-bold tracking-wide"
-                        >Aadhar Verification Integration</span
-                      >
-                    </li>
-                  </div>
-                </ul>
-              </div>
-
-              <a
-                href="contact.html"
-                class="block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 bg-[length:200%_auto] hover:bg-right text-slate-900 font-extrabold text-center shadow-lg shadow-gold-500/25 hover:shadow-gold-500/40 hover:-translate-y-1 transition-all duration-300"
-                data-cursor="hover"
-              >
-                Get Enterprise Power
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-24 bg-white relative">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <h2
-          class="text-4xl font-bold text-slate-900 text-center mb-16 reveal-hidden tracking-tight"
-        >
-          Common Questions
-        </h2>
-
-        <div class="space-y-6 reveal-hidden delay-100">
-          <details
-            class="group bg-slate-50 hover:bg-slate-100 p-6 rounded-2xl border border-slate-200 transition-all duration-300 cursor-pointer [&_summary::-webkit-details-marker]:hidden open:bg-white open:shadow-md open:border-gold-200"
-            data-cursor="hover"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 list-none select-none"
-            >
-              <span>Why is there a Yearly Subscription charge?</span>
-              <span
-                class="transition-transform duration-300 group-open:rotate-180 text-gold-500 bg-gold-100 p-2 rounded-full"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </span>
-            </summary>
-            <div
-              class="text-slate-600 mt-6 text-base leading-relaxed border-t border-slate-100 pt-6"
-            >
-              <p class="mb-4">
-                The initial cost covers the
-                <strong>Lifetime Software License</strong>. The recurring yearly
-                fee of ₹6,000 is strictly for essential ongoing services:
-              </p>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-gold-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  Cloud Server Maintenance (AWS)
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-gold-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  Automated Daily Backups
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-gold-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  Technical Support
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-gold-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  Software Updates & Patches
-                </li>
-              </ul>
-            </div>
-          </details>
-
-          <details
-            class="group bg-slate-50 hover:bg-slate-100 p-6 rounded-2xl border border-slate-200 transition-all duration-300 cursor-pointer [&_summary::-webkit-details-marker]:hidden open:bg-white open:shadow-md open:border-gold-200"
-            data-cursor="hover"
-          >
-            <summary
-              class="flex justify-between items-center font-bold text-lg text-slate-900 list-none select-none"
-            >
-              <span>Do I need to buy a biometric device separately?</span>
-              <span
-                class="transition-transform duration-300 group-open:rotate-180 text-gold-500 bg-gold-100 p-2 rounded-full"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </span>
-            </summary>
-            <p
-              class="text-slate-600 mt-6 text-base leading-relaxed border-t border-slate-100 pt-6"
-            >
-              Yes. The software is fully compatible with industry-standard
-              devices like <strong>Mantra or Morpho</strong>. However, the
-              physical hardware device must be purchased separately from
-              electronics vendors. We are happy to provide recommendations on
-              compatible models.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <div id="app-footer"></div>
-
-    <script src="components.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // --- Custom Cursor Logic ---
-        const cursorDot = document.querySelector("[data-cursor-dot]");
-        const cursorOutline = document.querySelector("[data-cursor-outline]");
-        const hoverElements = document.querySelectorAll(
-          "a, button, summary, [data-cursor='hover']"
-        );
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let outlineX = 0;
-        let outlineY = 0;
-
-        // Initial hide offscreen
-        cursorDot.style.opacity = 0;
-        cursorOutline.style.opacity = 0;
-
-        // Show cursor on first mouse move
-        document.addEventListener(
-          "mousemove",
-          (e) => {
-            if (cursorDot.style.opacity === "0") {
-              cursorDot.style.opacity = 1;
-              cursorOutline.style.opacity = 0.5;
-            }
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-          },
-          { once: true }
-        );
-
-        // Update position
-        document.addEventListener("mousemove", (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          // Instant follow for dot
-          cursorDot.style.top = `${mouseY}px`;
-          cursorDot.style.left = `${mouseX}px`;
-        });
-
-        // Smooth follow for outline using requestAnimationFrame
-        function animateCursor() {
-          let distX = mouseX - outlineX;
-          let distY = mouseY - outlineY;
-
-          outlineX = outlineX + distX * 0.15; // Adjust speed here
-          outlineY = outlineY + distY * 0.15;
-
-          cursorOutline.style.top = `${outlineY}px`;
-          cursorOutline.style.left = `${outlineX}px`;
-
-          requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Hover interactions
-        hoverElements.forEach((el) => {
-          el.addEventListener("mouseenter", () => {
-            cursorOutline.classList.add("cursor-hover");
-          });
-          el.addEventListener("mouseleave", () => {
-            cursorOutline.classList.remove("cursor-hover");
-          });
-        });
-
-        // Hide on mouseout of document
-        document.addEventListener("mouseout", (e) => {
-          if (!e.relatedTarget && !e.toElement) {
-            cursorDot.style.opacity = 0;
-            cursorOutline.style.opacity = 0;
-          }
-        });
-        document.addEventListener("mouseover", (e) => {
-          cursorDot.style.opacity = 1;
-          // Only restore outline opacity if it's not currently hovering something
-          if (!cursorOutline.classList.contains("cursor-hover")) {
-            cursorOutline.style.opacity = 0.5;
-          } else {
-            cursorOutline.style.opacity = 0.3;
-          }
-        });
-
-        // --- Intersection Observer for Scroll Animations ---
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.15,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.remove("reveal-hidden");
-              entry.target.classList.add("reveal-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-
-        const elements = document.querySelectorAll(".reveal-hidden");
-        elements.forEach((el) => observer.observe(el));
-      });
-    </script>
-  </body>
 </html>

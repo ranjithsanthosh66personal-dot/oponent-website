@@ -1,1114 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinGold - The Gold Standard in Loan Management</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinGold - The Gold Standard in Loan Management</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <script src="assets/libs/tailwind/tailwindcss.js"></script>
+  <link href="assets/css/fonts.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-    <style>
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        overflow-x: hidden;
-      }
+</head>
+<!-- Body - Main layout wrapper with global font settings and cursor custom div -->
 
-      /* Gold Shimmer Gradient */
-      .text-gold-shimmer {
-        background: linear-gradient(
-          90deg,
-          #ca8a04 0%,
-          #fde047 50%,
-          #ca8a04 100%
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+<body
+  class="bg-stone-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-500 selection:text-white cursor-none">
+  <!-- App Header - Loaded dynamically via components.js -->
+  <div id="app-header"></div>
+  <div class="cursor-dot hidden md:block"></div>
+  <div class="cursor-outline hidden md:block"></div>
 
-      /* SVG Line Setup for Draw Animation */
-      .flow-line {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-      }
+  <!-- Hero Section - Introduction with parallax background, value proposition, and CTA video modal -->
+  <section class="relative bg-stone-50 overflow-hidden pb-20 pt-16 min-h-screen flex flex-col justify-center" id="hero">
+    <div
+      class="parallax-bg absolute top-0 right-0 w-[800px] h-[800px] bg-yellow-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"
+      data-speed="0.2"></div>
+    <div
+      class="parallax-bg absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4"
+      data-speed="-0.2"></div>
+    <div class="absolute inset-0 bg-[url('assets/images/cubes.png')] opacity-[0.05]">
+    </div>
 
-      /* Custom Cursor */
-      .cursor-dot,
-      .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-      }
-      .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background: #eab308;
-      }
-      .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(234, 179, 8, 0.5);
-        transition: all 0.2s ease-out;
-      }
-
-      /* 3D Perspective Container */
-      .perspective-3d {
-        perspective: 1000px;
-      }
-
-      /* Card Initial States for Animation */
-      .split-card {
-        will-change: transform, opacity;
-      }
-    </style>
-  </head>
-  <body
-    class="bg-stone-50 flex flex-col min-h-screen pt-20 text-slate-900 selection:bg-yellow-500 selection:text-white cursor-none"
-  >
-    <div id="app-header"></div>
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
-
-    <section
-      class="relative bg-stone-50 overflow-hidden pb-20 pt-16 min-h-screen flex flex-col justify-center"
-      id="hero"
-    >
-      <div
-        class="parallax-bg absolute top-0 right-0 w-[800px] h-[800px] bg-yellow-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"
-        data-speed="0.2"
-      ></div>
-      <div
-        class="parallax-bg absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4"
-        data-speed="-0.2"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05]"
-      ></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div class="text-center max-w-4xl mx-auto mb-16">
-          <div
-            class="hero-elem inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 shadow-sm text-yellow-700 text-sm font-semibold mb-8 cursor-default"
-          >
-            <span
-              class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"
-            ></span>
-            Trusted by 4,000+ Jewelers & Bankers
-          </div>
-
-          <h1
-            class="text-5xl md:text-8xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 overflow-hidden"
-          >
-            <span class="hero-line block">Master your</span>
-            <span class="hero-line block text-gold-shimmer">Gold Business</span>
-            <span class="hero-line block">with Intelligent Cloud.</span>
-          </h1>
-
-          <p
-            class="hero-elem text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto"
-          >
-            The only software that unifies <strong>Gold Loans</strong>,
-            <strong>Jewelry Sales</strong>, and
-            <strong>GST Accounting</strong> into one seamless experience.
-          </p>
-
-          <div class="hero-elem flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              class="magnet-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold text-lg py-4 px-10 rounded-full shadow-[0_10px_30px_rgba(234,179,8,0.3)]"
-            >
-              Start Free Trial
-            </button>
-
-            <button
-              onclick="toggleVideoModal(true)"
-              class="magnet-btn group flex items-center justify-center gap-2 bg-white text-slate-800 border border-stone-200 font-bold text-lg py-4 px-10 rounded-full shadow-sm hover:shadow-md transition-all"
-            >
-              <svg
-                class="w-5 h-5 text-yellow-600 group-hover:scale-110 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Watch Video
-            </button>
-          </div>
-        </div>
-
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="text-center max-w-4xl mx-auto mb-16">
         <div
-          id="hero-dashboard"
-          class="perspective-3d relative mt-12 mx-auto max-w-5xl group opacity-0 translate-y-20"
-        >
-          <div
-            class="tilt-card relative bg-slate-800 rounded-t-2xl p-2 border-t border-l border-r border-slate-700 shadow-2xl transition-transform duration-100 ease-out"
-          >
-            <div
-              class="bg-slate-900 rounded-lg overflow-hidden border border-slate-800 relative aspect-[16/9]"
-            >
-              <img
-                src="./public/image.png"
-                alt="Dashboard"
-                class="w-full h-full object-cover opacity-90"
-              />
-              <div
-                class="absolute top-10 right-10 w-64 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-600 animate-float"
-              >
-                <div class="flex justify-between text-xs text-slate-400 mb-2">
-                  <span>Gold Rate (22k)</span>
-                  <span class="text-green-400">▲ 1.2%</span>
-                </div>
-                <div class="text-2xl font-bold text-white">
-                  ₹6,850 <span class="text-xs font-normal">/gm</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="bg-slate-400/50 h-4 rounded-b-xl mx-auto w-[102%] blur-xl"
-          ></div>
-        </div>
-      </div>
-
-      <div
-        id="video-modal"
-        class="fixed inset-0 z-[100] hidden items-center justify-center"
-      >
-        <div
-          class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
-          onclick="toggleVideoModal(false)"
-        ></div>
-        <div class="relative w-full max-w-5xl p-4 z-10">
-          <div
-            id="modal-panel"
-            class="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700 aspect-video scale-90 opacity-0"
-          >
-            <button
-              onclick="toggleVideoModal(false)"
-              class="absolute top-4 right-4 text-white z-20 bg-slate-800/50 p-2 rounded-full hover:bg-slate-700"
-            >
-              ✕
-            </button>
-            <video id="local-video" class="w-full h-full" controls>
-              <source
-                src="./public/Financial Platform Elevated.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="bg-stone-100 border-b border-stone-200 relative z-20 shadow-sm"
-      id="stats"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-stone-200"
-        >
-          <div class="p-4 stat-card">
-            <span
-              class="block text-4xl font-extrabold text-slate-900 mb-1 count-up"
-              data-target="90"
-              data-suffix="%"
-              >0%</span
-            >
-            <p
-              class="text-sm text-slate-500 font-medium uppercase tracking-wide"
-            >
-              Automation
-            </p>
-          </div>
-          <div class="p-4 stat-card">
-            <span
-              class="block text-4xl font-extrabold text-slate-900 mb-1 count-up"
-              data-target="100"
-              data-suffix=" Hrs"
-              >0</span
-            >
-            <p
-              class="text-sm text-slate-500 font-medium uppercase tracking-wide"
-            >
-              Time Saved / Mo
-            </p>
-          </div>
-          <div class="p-4 stat-card">
-            <span
-              class="block text-4xl font-extrabold text-slate-900 mb-1 count-up"
-              data-target="40"
-              data-suffix="%"
-              >0%</span
-            >
-            <p
-              class="text-sm text-slate-500 font-medium uppercase tracking-wide"
-            >
-              Revenue Growth
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="device-section bg-stone-50 relative overflow-hidden flex items-center justify-center py-20"
-    >
-      <div class="container max-w-7xl mx-auto px-4">
-        <div class="text-center mb-10 z-10 relative">
-          <h2
-            class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 device-text"
-          >
-            Your Business, Everywhere.
-          </h2>
-          <p class="text-lg text-slate-600 max-w-2xl mx-auto device-text">
-            Whether you are at the counter, in the back office, or traveling,
-            FinGold stays with you.
-          </p>
+          class="hero-elem inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 shadow-sm text-yellow-700 text-sm font-semibold mb-8 cursor-default">
+          <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+          Trusted by 2,000+ Jewelers & Bankers
         </div>
 
-        <div
-          class="relative h-[600px] flex items-center justify-center perspective-3d"
-        >
-          <div
-            id="device-laptop"
-            class="absolute top-0 w-[80%] md:w-[700px] z-10 origin-bottom"
-          >
-            <div
-              class="bg-slate-200 rounded-xl p-1 shadow-2xl border border-slate-300"
-            >
-              <img
-                src="./public/image.png"
-                class="rounded-lg w-full"
-                alt="Laptop View"
-              />
-            </div>
-          </div>
-          <div
-            id="device-tablet"
-            class="absolute bottom-[0px] left-[-200px] w-[50%] md:w-[400px] z-20 opacity-0"
-          >
-            <div
-              class="bg-slate-900 rounded-[2rem] p-3 shadow-2xl border border-slate-800"
-            >
-              <img
-                src="./public/image copy.png"
-                class="rounded-3xl w-full"
-                alt="Tablet View"
-              />
-            </div>
-          </div>
-          <div
-            id="device-mobile"
-            class="absolute bottom-[-20px] right-[-100px] w-[30%] md:w-[220px] z-30 opacity-0"
-          >
-            <div
-              class="bg-slate-900 rounded-[3rem] p-2 shadow-2xl border-4 border-slate-800"
-            >
-              <div
-                class="bg-slate-800 rounded-[2.5rem] overflow-hidden h-full border border-slate-700 relative"
-              >
-                <img
-                  src="./public/image copy.png"
-                  class="w-full h-full object-cover"
-                  alt="Mobile App View"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h1
+          class="text-5xl md:text-8xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6 overflow-hidden">
+          <span class="hero-line block">Master your</span>
+          <span class="hero-line block text-gold-shimmer">Gold Business</span>
+          <span class="hero-line block">with Intelligent Cloud.</span>
+        </h1>
 
-    <section
-      id="orbit-section"
-      class="py-24 bg-gradient-to-br from-amber-500 to-orange-600 relative overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"
-      ></div>
-
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
-      >
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 reveal-text">
-          Complete Business at your Fingertips
-        </h2>
-        <p class="text-white/90 mb-16 max-w-2xl mx-auto text-lg reveal-text">
-          Visualize your data. Analyze trends. Make decisions on the go.
+        <p class="hero-elem text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+          The only software that unifies <strong>Gold Loans</strong>,
+          <strong>Jewelry Sales</strong>, and
+          <strong>GST Accounting</strong> into one seamless experience.
         </p>
 
+        <div class="hero-elem flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="magnet-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold text-lg py-4 px-10 rounded-full shadow-[0_10px_30px_rgba(234,179,8,0.3)]">
+            Start Free Trial
+          </button>
+
+          <button onclick="toggleVideoModal(true)"
+            class="magnet-btn group flex items-center justify-center gap-2 bg-white text-slate-800 border border-stone-200 font-bold text-lg py-4 px-10 rounded-full shadow-sm hover:shadow-md transition-all">
+            <svg class="w-5 h-5 text-yellow-600 group-hover:scale-110 transition-transform" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Watch Video
+          </button>
+        </div>
+      </div>
+
+      <div id="hero-dashboard" class="perspective-3d relative mt-12 mx-auto max-w-5xl group opacity-0 translate-y-20">
         <div
-          class="relative inline-block mt-8 w-full max-w-[600px] h-[600px] flex items-center justify-center mx-auto"
-        >
-          <div
-            class="relative z-20 bg-slate-900 p-2 rounded-[3rem] shadow-2xl border-4 border-slate-800 w-[280px] md:w-[320px] animate-hover-y"
-          >
-            <img
-              src="./public/image copy.png"
-              alt="App Screen"
-              class="rounded-[2.5rem] w-full"
-            />
-          </div>
-
-          <div
-            class="orbit-item absolute top-[20%] left-0 md:-left-20 group cursor-pointer hover:z-30"
-          >
-            <div class="flex items-center justify-end">
-              <div
-                class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110"
-              >
-                <span class="font-bold text-slate-900 text-sm"
-                  >Loan Analysis</span
-                >
+          class="tilt-card relative bg-slate-800 rounded-t-2xl p-2 border-t border-l border-r border-slate-700 shadow-2xl transition-transform duration-100 ease-out">
+          <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-800 relative aspect-[16/9]">
+            <img src="./assets/images/dashboard.jpg" alt="Dashboard" class="w-full h-full object-cover opacity-90" />
+            <div
+              class="absolute top-10 right-10 w-64 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-600 animate-float">
+              <div class="flex justify-between text-xs text-slate-400 mb-2">
+                <span>Gold Rate (22k)</span>
+                <span class="text-green-400 flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                  1.2%
+                </span>
               </div>
-              <div class="h-[1px] w-12 bg-white/50"></div>
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-          </div>
-          <div
-            class="orbit-item absolute top-[65%] left-0 md:-left-20 group cursor-pointer hover:z-30"
-          >
-            <div class="flex items-center justify-end">
-              <div
-                class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110"
-              >
-                <span class="font-bold text-slate-900 text-sm"
-                  >Live Transactions</span
-                >
-              </div>
-              <div class="h-[1px] w-12 bg-white/50"></div>
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-          </div>
-          <div
-            class="orbit-item absolute top-[30%] right-0 md:-right-20 group cursor-pointer hover:z-30"
-          >
-            <div class="flex items-center">
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-              <div class="h-[1px] w-12 bg-white/50"></div>
-              <div
-                class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110"
-              >
-                <span class="font-bold text-slate-900 text-sm"
-                  >Graphical View</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="orbit-item absolute top-[70%] right-0 md:-right-20 group cursor-pointer hover:z-30"
-          >
-            <div class="flex items-center">
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-              <div class="h-[1px] w-12 bg-white/50"></div>
-              <div
-                class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110"
-              >
-                <span class="font-bold text-slate-900 text-sm"
-                  >Customer KYC</span
-                >
+              <div class="text-2xl font-bold text-white">
+                ₹12,892 <span class="text-xs font-normal">/gm</span>
               </div>
             </div>
           </div>
         </div>
+        <div class="bg-slate-400/50 h-4 rounded-b-xl mx-auto w-[102%] blur-xl"></div>
       </div>
-    </section>
+    </div>
 
-    <section class="py-32 bg-stone-50 relative overflow-hidden" id="modules">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold text-slate-900 reveal-text">
-            Major & Exclusive Modules
-          </h2>
-          <p class="text-slate-500 mt-4 reveal-text">
-            Scroll to explore our core features
+    <div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+      <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="toggleVideoModal(false)"></div>
+      <div class="relative w-full max-w-5xl p-4 z-10">
+        <div id="modal-panel"
+          class="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700 aspect-video scale-90 opacity-0">
+          <button onclick="toggleVideoModal(false)"
+            class="absolute top-4 right-4 text-white z-20 bg-slate-800/50 p-2 rounded-full hover:bg-slate-700 transition-colors">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <video id="local-video" class="w-full h-full" controls>
+            <source src="./assets/videos/promo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Stats Section - Key performance metrics with count-up animation -->
+  <section class="bg-stone-100 border-b border-stone-200 relative z-20 shadow-sm" id="stats">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-stone-200">
+        <div class="p-4 stat-card">
+          <span class="block text-4xl font-extrabold text-slate-900 mb-1 count-up" data-target="90"
+            data-suffix="%">0%</span>
+          <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">
+            Automation
           </p>
         </div>
+        <div class="p-4 stat-card">
+          <span class="block text-4xl font-extrabold text-slate-900 mb-1 count-up" data-target="100"
+            data-suffix=" Hrs">0</span>
+          <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">
+            Time Saved / Mo
+          </p>
+        </div>
+        <div class="p-4 stat-card">
+          <span class="block text-4xl font-extrabold text-slate-900 mb-1 count-up" data-target="40"
+            data-suffix="%">0%</span>
+          <p class="text-sm text-slate-500 font-medium uppercase tracking-wide">
+            Revenue Growth
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Device Showcase - Visual demo of cross-platform compatibility (Laptop, Tablet, Mobile) -->
+  <section class="device-section bg-stone-50 relative overflow-hidden flex items-center justify-center py-20">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10 z-10 relative">
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 device-text">
+          Your Business, Everywhere.
+        </h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto device-text">
+          Whether you are at the counter, in the back office, or traveling,
+          FinGold stays with you.
+        </p>
+      </div>
+
+      <div class="relative h-[600px] flex items-center justify-center perspective-3d">
+        <div id="device-laptop" class="absolute top-0 w-[80%] md:w-[700px] z-10 origin-bottom">
+          <div class="bg-slate-200 rounded-xl p-1 shadow-2xl border border-slate-300">
+            <img src="./assets/images/MultiScreenIMG.jpg" class="rounded-lg w-full" alt="Laptop View" />
+          </div>
+        </div>
+        <div id="device-tablet" class="absolute bottom-[0px] left-[-200px] w-[50%] md:w-[400px] z-20 opacity-0">
+          <div class="bg-slate-900 rounded-[2rem] p-3 shadow-2xl border border-slate-800">
+            <img src="./assets/images/MobileDashboard.jpg" class="rounded-3xl w-full" alt="Tablet View" />
+          </div>
+        </div>
+        <div id="device-mobile" class="absolute bottom-[-20px] right-[-100px] w-[30%] md:w-[220px] z-30 opacity-0">
+          <div class="bg-slate-900 rounded-[3rem] p-2 shadow-2xl border-4 border-slate-800">
+            <div class="bg-slate-800 rounded-[2.5rem] overflow-hidden h-full border border-slate-700 relative">
+              <img src="./assets/images/MobileDashboard.jpg" class="w-full h-full object-cover" alt="Mobile App View" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orbit Features - Circular interactive visualization of core app functionalities -->
+  <section id="orbit-section" class="py-24 bg-gradient-to-br from-amber-500 to-orange-600 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('assets/images/cubes.png')] opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 reveal-text">
+        Complete Business at your Fingertips
+      </h2>
+      <p class="text-white/90 mb-16 max-w-2xl mx-auto text-lg reveal-text">
+        Visualize your data. Analyze trends. Make decisions on the go.
+      </p>
+
+      <div class="relative inline-block mt-8 w-full max-w-[600px] h-[600px] flex items-center justify-center mx-auto">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          id="modules-grid"
-        >
-          <div
-            class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300"
-          >
-            <div
-              class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                ></path>
-              </svg>
+          class="relative z-20 bg-slate-900 p-2 rounded-[3rem] shadow-2xl border-4 border-slate-800 w-[280px] md:w-[320px] animate-hover-y">
+          <img src="./assets/images/MobileDashboard.jpg" alt="App Screen" class="rounded-[2.5rem] w-full" />
+        </div>
+
+        <div class="orbit-item absolute top-[20%] left-0 md:-left-20 group cursor-pointer hover:z-30">
+          <div class="flex items-center justify-end">
+            <div class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110">
+              <span class="font-bold text-slate-900 text-sm">Loan Analysis</span>
             </div>
-            <h3 class="font-bold text-slate-900 text-xl mb-3">Gold Loan</h3>
-            <p class="text-sm text-slate-600">
-              Complete customer database with photos & snapshots.
-            </p>
-          </div>
-          <div
-            class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300"
-          >
-            <div
-              class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-slate-900 text-xl mb-3">Repledge</h3>
-            <p class="text-sm text-slate-600">
-              Pledge ornaments in banks. Compare interest rates.
-            </p>
-          </div>
-          <div
-            class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300"
-          >
-            <div
-              class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-slate-900 text-xl mb-3">WhatsApp</h3>
-            <p class="text-sm text-slate-600">
-              Send alerts on demand with OTP generation.
-            </p>
-          </div>
-          <div
-            class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300"
-          >
-            <div
-              class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-slate-900 text-xl mb-3">Biometric</h3>
-            <p class="text-sm text-slate-600">
-              Link Aadhar with Government Database directly.
-            </p>
+            <div class="h-[1px] w-12 bg-white/50"></div>
+            <div class="w-3 h-3 bg-white rounded-full"></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section
-      class="py-24 bg-stone-50 relative overflow-hidden"
-      id="dark-features"
-    >
-      <div
-        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
-      ></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div class="relative h-[400px] flex items-center justify-center">
-            <div
-              class="feature-card-1 absolute w-64 h-80 bg-white rounded-2xl border border-blue-100 shadow-2xl z-10 flex flex-col items-center justify-center p-6 bg-gradient-to-r from-yellow-200 to-yellow-400"
-            >
-              <div
-                class="text-blue-600 text-sm font-bold uppercase tracking-widest mb-2"
-              >
-                Bank Repledge
-              </div>
-              <div class="text-4xl font-bold text-slate-900">₹ 50L</div>
-              <div class="text-xs text-blue-500 mt-2">Active Limit</div>
+        <div class="orbit-item absolute top-[65%] left-0 md:-left-20 group cursor-pointer hover:z-30">
+          <div class="flex items-center justify-end">
+            <div class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110">
+              <span class="font-bold text-slate-900 text-sm">Live Transactions</span>
             </div>
-            <div
-              class="feature-card-2 absolute w-64 h-80 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-2xl border border-yellow-100 shadow-xl z-20 flex flex-col items-center justify-center p-6"
-            >
-              <div
-                class="text-slate-900 text-sm font-bold uppercase tracking-widest mb-2"
-              >
-                Gold Asset
-              </div>
-              <div
-                class="w-16 h-16 bg-yellow-100 text-slate-900 rounded-full flex items-center justify-center mb-2"
-              >
-                <span class="text-2xl">🏆</span>
-              </div>
-              <div class="text-xs text-slate-900">1.2 KG Holdings</div>
+            <div class="h-[1px] w-12 bg-white/50"></div>
+            <div class="w-3 h-3 bg-white rounded-full"></div>
+          </div>
+        </div>
+        <div class="orbit-item absolute top-[30%] right-0 md:-right-20 group cursor-pointer hover:z-30">
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-white rounded-full"></div>
+            <div class="h-[1px] w-12 bg-white/50"></div>
+            <div class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110">
+              <span class="font-bold text-slate-900 text-sm">Graphical View</span>
             </div>
           </div>
+        </div>
 
-          <div id="feature-list">
-            <span
-              class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block reveal-text"
-              >Advanced Management</span
-            >
-            <h2
-              class="text-3xl md:text-5xl font-bold text-slate-900 mb-8 reveal-text"
-            >
-              Enhanced Repledge Module
-            </h2>
-            <div class="space-y-6">
-              <div
-                class="feature-item flex items-start opacity-0 translate-x-10"
-              >
-                <div
-                  class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mt-1 shrink-0"
-                >
-                  1
-                </div>
-                <div class="ml-4">
-                  <h4 class="text-xl font-bold text-slate-900">
-                    Multi-Bank Consolidation
-                  </h4>
-                  <p class="text-slate-500 mt-1">
-                    Maintain multiple bank accounts.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="feature-item flex items-start opacity-0 translate-x-10"
-              >
-                <div
-                  class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mt-1 shrink-0"
-                >
-                  2
-                </div>
-                <div class="ml-4">
-                  <h4 class="text-xl font-bold text-slate-900">
-                    Smart Mapping
-                  </h4>
-                  <p class="text-slate-500 mt-1">
-                    Repledge multiple customer loans.
-                  </p>
-                </div>
-              </div>
+        <div class="orbit-item absolute top-[70%] right-0 md:-right-20 group cursor-pointer hover:z-30">
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-white rounded-full"></div>
+            <div class="h-[1px] w-12 bg-white/50"></div>
+            <div class="bg-white px-4 py-2 rounded-lg shadow-lg transform transition-transform group-hover:scale-110">
+              <span class="font-bold text-slate-900 text-sm">Customer KYC</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section
-      class="py-24 bg-stone-100 border-t border-stone-200"
-      id="integration"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <span
-              class="text-yellow-600 font-bold tracking-wider uppercase text-sm mb-2 reveal-text"
-              >Seamless Integration</span
-            >
-            <h2
-              class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight reveal-text"
-            >
-              Eliminate separate <br />Accounting Software
-            </h2>
-            <p class="text-slate-600 mb-8 text-lg reveal-text">
-              FinGold comes with complete Financial Accounts inbuilt. Every loan
-              entry creates a journal entry automatically.
-            </p>
-            <ul class="space-y-4">
-              <li
-                class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5"
-              >
-                <svg
-                  class="w-5 h-5 text-green-500 mr-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-slate-700 font-medium"
-                  >Loan vouchers posted automatically</span
-                >
-              </li>
-              <li
-                class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5"
-              >
-                <svg
-                  class="w-5 h-5 text-green-500 mr-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-slate-700 font-medium"
-                  >Manage Assets, Liabilities & Expenses</span
-                >
-              </li>
-              <li
-                class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5"
-              >
-                <svg
-                  class="w-5 h-5 text-green-500 mr-3 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-                <span class="text-slate-700 font-medium"
-                  >Multi-branch / Multi-company ready</span
-                >
-              </li>
-            </ul>
-          </div>
-          <div
-            class="order-1 lg:order-2 relative bg-white p-8 rounded-2xl shadow-xl border border-stone-200 h-[400px] flex items-center justify-center"
-          >
-            <div
-              class="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg"
-            >
-              Auto-Sync
-            </div>
-            <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
-              <path
-                d="M130 100 Q 250 100 250 150 T 350 200"
-                fill="none"
-                stroke="#EAB308"
-                stroke-width="2"
-                class="flow-line"
-              ></path>
-              <path
-                d="M130 300 Q 250 300 250 250 T 350 200"
-                fill="none"
-                stroke="#3B82F6"
-                stroke-width="2"
-                class="flow-line"
-              ></path>
+  <!-- Modules Grid - Grid layout highlighting major and unique modules like Gold Loan, WhatsApp, etc. -->
+  <section class="py-32 bg-stone-50 relative overflow-hidden" id="modules">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 reveal-text">
+          Major & Exclusive Modules
+        </h2>
+        <p class="text-slate-500 mt-4 reveal-text">
+          Scroll to explore our core features
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="modules-grid">
+        <div
+          class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
             </svg>
-            <div class="w-full relative h-full">
+          </div>
+          <h3 class="font-bold text-slate-900 text-xl mb-3">Gold Loan</h3>
+          <p class="text-sm text-slate-600">
+            Complete customer database with photos & snapshots.
+          </p>
+        </div>
+        <div
+          class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-xl mb-3">Repledge</h3>
+          <p class="text-sm text-slate-600">
+            Pledge ornaments in banks. Compare interest rates.
+          </p>
+        </div>
+        <div
+          class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-xl mb-3">WhatsApp</h3>
+          <p class="text-sm text-slate-600">
+            Send alerts on demand with OTP generation.
+          </p>
+        </div>
+        <div
+          class="split-card module-card p-8 border border-stone-100 rounded-2xl bg-white shadow-lg group hover:shadow-2xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-xl mb-3">Biometric</h3>
+          <p class="text-sm text-slate-600">
+            Link Aadhar with Government Database directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Features - Dark themed section with 3D cards focusing on advanced features like Repledge -->
+  <section class="py-24 bg-stone-50 relative overflow-hidden" id="dark-features">
+    <div class="absolute inset-0 bg-[url('assets/images/cubes.png')] opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div class="relative h-[400px] flex items-center justify-center">
+          <div
+            class="feature-card-1 absolute w-64 h-80 bg-white rounded-2xl border border-blue-100 shadow-2xl z-10 flex flex-col items-center justify-center p-6 bg-gradient-to-r from-yellow-200 to-yellow-400">
+            <div class="text-blue-600 text-sm font-bold uppercase tracking-widest mb-2">
+              Bank Repledge
+            </div>
+            <div class="text-4xl font-bold text-slate-900">₹ 50L</div>
+            <div class="text-xs text-blue-500 mt-2">Active Limit</div>
+          </div>
+          <div
+            class="feature-card-2 absolute w-64 h-80 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-2xl border border-yellow-100 shadow-xl z-20 flex flex-col items-center justify-center p-6">
+            <div class="text-slate-900 text-sm font-bold uppercase tracking-widest mb-2">
+              Gold Asset
+            </div>
+            <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="text-xs text-slate-900">1.2 KG Holdings</div>
+          </div>
+        </div>
+
+        <div id="feature-list">
+          <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block reveal-text">Advanced
+            Management</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-8 reveal-text">
+            Enhanced Repledge Module
+          </h2>
+          <div class="space-y-6">
+            <div class="feature-item flex items-start opacity-0 translate-x-10">
               <div
-                class="flow-node absolute top-[20%] left-0 w-32 bg-blue-50 border border-blue-200 p-3 rounded-xl text-center z-10"
-              >
-                <div class="text-2xl mb-1">🏦</div>
-                <span class="font-bold text-slate-800 text-xs"
-                  >Loan Disbursement</span
-                >
+                class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mt-1 shrink-0">
+                1
               </div>
-              <div
-                class="flow-node absolute bottom-[20%] left-0 w-32 bg-blue-50 border border-blue-200 p-3 rounded-xl text-center z-10"
-              >
-                <div class="text-2xl mb-1">🔁</div>
-                <span class="font-bold text-slate-800 text-xs"
-                  >Repledge Entry</span
-                >
+              <div class="ml-4">
+                <h4 class="text-xl font-bold text-slate-900">
+                  Multi-Bank Consolidation
+                </h4>
+                <p class="text-slate-500 mt-1">
+                  Maintain multiple bank accounts.
+                </p>
               </div>
+            </div>
+            <div class="feature-item flex items-start opacity-0 translate-x-10">
               <div
-                class="flow-center absolute top-1/2 transform -translate-y-1/2 right-0 w-56 bg-slate-800 p-4 rounded-xl text-center shadow-2xl z-10 border border-slate-700"
-              >
-                <div
-                  class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mx-auto -mt-8 mb-2 border-4 border-slate-800"
-                >
-                  <svg
-                    class="w-4 h-4 text-slate-900"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                    ></path>
+                class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mt-1 shrink-0">
+                2
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold text-slate-900">
+                  Smart Mapping
+                </h4>
+                <p class="text-slate-500 mt-1">
+                  Repledge multiple customer loans.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration - Details on financial integration and automated accounting workflow -->
+  <section class="py-24 bg-stone-100 border-t border-stone-200" id="integration">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <span class="text-yellow-600 font-bold tracking-wider uppercase text-sm mb-2 reveal-text">Seamless
+            Integration</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight reveal-text">
+            Eliminate separate <br />Accounting Software
+          </h2>
+          <p class="text-slate-600 mb-8 text-lg reveal-text">
+            FinGold comes with complete Financial Accounts inbuilt. Every loan
+            entry creates a journal entry automatically.
+          </p>
+          <ul class="space-y-4">
+            <li
+              class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-slate-700 font-medium">Loan vouchers posted automatically</span>
+            </li>
+            <li
+              class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5">
+              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-slate-700 font-medium">Manage Assets, Liabilities & Expenses</span>
+            </li>
+            <li
+              class="check-item flex items-center p-3 bg-white rounded-lg border border-stone-200 shadow-sm opacity-0 -translate-x-5">
+              <svg class="w-5 h-5 text-green-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-slate-700 font-medium">Multi-branch / Multi-company ready</span>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="order-1 lg:order-2 relative bg-white p-8 rounded-2xl shadow-xl border border-stone-200 h-[400px] flex items-center justify-center">
+          <div class="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+            Auto-Sync
+          </div>
+          <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <path d="M130 100 Q 250 100 250 150 T 350 200" fill="none" stroke="#EAB308" stroke-width="2"
+              class="flow-line"></path>
+            <path d="M130 300 Q 250 300 250 250 T 350 200" fill="none" stroke="#3B82F6" stroke-width="2"
+              class="flow-line"></path>
+          </svg>
+          <div class="w-full relative h-full">
+            <div
+              class="flow-node absolute top-[20%] left-0 w-32 bg-blue-50 border border-blue-200 p-3 rounded-xl text-center z-10">
+              <div class="text-2xl mb-1 flex justify-center text-blue-600">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                </svg>
+              </div>
+              <span class="font-bold text-slate-800 text-xs">Loan Disbursement</span>
+            </div>
+            <div
+              class="flow-node absolute bottom-[20%] left-0 w-32 bg-blue-50 border border-blue-200 p-3 rounded-xl text-center z-10">
+              <div class="text-2xl mb-1 flex justify-center text-blue-600">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <span class="font-bold text-slate-800 text-xs">Repledge Entry</span>
+            </div>
+            <div
+              class="flow-center absolute top-1/2 transform -translate-y-1/2 right-0 w-56 bg-slate-800 p-4 rounded-xl text-center shadow-2xl z-10 border border-slate-700">
+              <div
+                class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mx-auto -mt-8 mb-2 border-4 border-slate-800">
+                <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                  </path>
+                </svg>
+              </div>
+              <span class="block text-yellow-400 font-bold text-xs uppercase mb-2">Financial System</span>
+              <div
+                class="text-white text-left text-xs font-mono space-y-2 bg-slate-900 p-2 rounded border border-slate-700">
+                <div class="flex justify-between items-center">
+                  <span>General Ledger</span>
+                  <svg class="w-3 h-3 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span
-                  class="block text-yellow-400 font-bold text-xs uppercase mb-2"
-                  >Financial System</span
-                >
-                <div
-                  class="text-white text-left text-xs font-mono space-y-2 bg-slate-900 p-2 rounded border border-slate-700"
-                >
-                  <div class="flex justify-between">
-                    <span>General Ledger</span>
-                    <span class="text-green-400">✓</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span>Trial Balance</span>
-                    <span class="text-green-400">✓</span>
-                  </div>
+                <div class="flex justify-between items-center">
+                  <span>Trial Balance</span>
+                   <svg class="w-3 h-3 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-32 bg-stone-100 relative overflow-hidden" id="audience">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
-      >
-        <h2
-          class="text-3xl md:text-5xl font-bold text-slate-900 mb-16 reveal-text"
-        >
-          Who is FinGold For?
-        </h2>
+  <!-- Audience - Targeted user segments (Small businesses, Multi-branch, NBFCs) -->
+  <section class="py-32 bg-stone-100 relative overflow-hidden" id="audience">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-16 reveal-text">
+        Who is FinGold For?
+      </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="audience-grid">
-          <div
-            class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300"
-          >
-            <div
-              class="w-24 h-24 mx-auto mb-6 rounded-full bg-yellow-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform"
-            >
-              🏪
-            </div>
-            <h3 class="font-bold text-slate-900 text-2xl mb-3">
-              Small Pawnbrokers
-            </h3>
-            <p class="text-slate-500">
-              Single shop owners looking to digitize operations.
-            </p>
-          </div>
-          <div
-            class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300"
-          >
-            <div
-              class="w-24 h-24 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform"
-            >
-              🏢
-            </div>
-            <h3 class="font-bold text-slate-900 text-2xl mb-3">Multi-Branch</h3>
-            <p class="text-slate-500">
-              Centralized admin control for 5+ branches.
-            </p>
-          </div>
-          <div
-            class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300"
-          >
-            <div
-              class="w-24 h-24 mx-auto mb-6 rounded-full bg-slate-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform"
-            >
-              🏦
-            </div>
-            <h3 class="font-bold text-slate-900 text-2xl mb-3">NBFCs</h3>
-            <p class="text-slate-500">
-              RBI compliant & high volume transaction ready.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-slate-900 relative overflow-hidden">
-      <div class="absolute inset-0 bg-yellow-600/10"></div>
-      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h2 class="text-4xl font-bold text-white mb-6 reveal-text">
-          Ready to upgrade your business?
-        </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="audience-grid">
         <div
-          class="flex flex-col sm:flex-row justify-center gap-4 cta-btns opacity-0 translate-y-10"
-        >
-          <a
-            href="#"
-            class="magnet-btn bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-lg shadow-lg"
-            >View Pricing Plans</a
-          >
-          <a
-            href="#"
-            class="magnet-btn bg-transparent border border-slate-600 hover:border-white text-white font-bold py-4 px-8 rounded-lg"
-            >Schedule a Demo</a
-          >
+          class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300">
+          <div
+            class="w-24 h-24 mx-auto mb-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 group-hover:scale-110 transition-transform">
+            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-2xl mb-3">
+            Small Pawnbrokers
+          </h3>
+          <p class="text-slate-500">
+            Single shop owners looking to digitize operations.
+          </p>
+        </div>
+        <div
+          class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300">
+          <div
+            class="w-24 h-24 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-2xl mb-3">Multi-Branch</h3>
+          <p class="text-slate-500">
+            Centralized admin control for 5+ branches.
+          </p>
+        </div>
+        <div
+          class="split-card audience-card p-10 rounded-2xl shadow-xl bg-white border border-stone-200 group hover:-translate-y-2 transition-transform duration-300">
+          <div
+            class="w-24 h-24 mx-auto mb-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:scale-110 transition-transform">
+            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-2xl mb-3">NBFCs</h3>
+          <p class="text-slate-500">
+            RBI compliant & high volume transaction ready.
+          </p>
         </div>
       </div>
-    </section>
-    <div id="app-footer"></div>
-    <script src="components.js"></script>
-    <script>
-      // 1. Initialize Lenis
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smooth: true,
-      });
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
+    </div>
+  </section>
 
-      // 2. Initialize GSAP
-      gsap.registerPlugin(ScrollTrigger);
+  <!-- Final CTA - Call to action for pricing and demo booking -->
+  <section class="py-20 bg-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-yellow-600/10"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <h2 class="text-4xl font-bold text-white mb-6 reveal-text">
+        Ready to upgrade your business?
+      </h2>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 cta-btns opacity-0 translate-y-10">
+        <a href="#"
+          class="magnet-btn bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-lg shadow-lg">View
+          Pricing Plans</a>
+        <a href="#"
+          class="magnet-btn bg-transparent border border-slate-600 hover:border-white text-white font-bold py-4 px-8 rounded-lg">Schedule
+          a Demo</a>
+      </div>
+    </div>
+  </section>
+  <!-- Footer - Loaded dynamically via components.js -->
+  <div id="app-footer"></div>
+  <!-- Scripts - Component loader and main interaction logic -->
+  <script src="components.js"></script>
 
-      // --- HERO & CURSOR ---
-      const cursorDot = document.querySelector(".cursor-dot");
-      const cursorOutline = document.querySelector(".cursor-outline");
-      window.addEventListener("mousemove", (e) => {
-        gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-        gsap.to(cursorOutline, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      });
-      const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
-      heroTl
-        .from(".hero-line", { y: 100, opacity: 0, stagger: 0.1, duration: 1.2 })
-        .from(
-          ".hero-elem",
-          { y: 20, opacity: 0, stagger: 0.1, duration: 1 },
-          "-=0.8"
-        )
-        .to(
-          "#hero-dashboard",
-          { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.2)" },
-          "-=0.8"
-        );
-      const dashboard = document.querySelector(".tilt-card");
-      document.addEventListener("mousemove", (e) => {
-        const x = (window.innerWidth / 2 - e.clientX) / 40;
-        const y = (window.innerHeight / 2 - e.clientY) / 40;
-        gsap.to(dashboard, { rotationY: x, rotationX: y, duration: 0.5 });
-      });
+  <script src="assets/script.js"></script>
 
-      // --- STATS ---
-      document.querySelectorAll(".stat-card").forEach((card) => {
-        let numObj = card.querySelector(".count-up");
-        let target = parseInt(numObj.getAttribute("data-target"));
-        let suffix = numObj.getAttribute("data-suffix");
-        let count = { val: 0 };
-        gsap.to(count, {
-          val: target,
-          duration: 2,
-          scrollTrigger: { trigger: card, start: "top 80%" },
-          onUpdate: () => {
-            numObj.innerText = Math.floor(count.val) + suffix;
-          },
-        });
-      });
+  <script src="assets/libs/gsap.min.js"></script>
+  <script src="assets/libs/ScrollTrigger.min.js"></script>
+  <script src="assets/libs/lenis.min.js"></script>
 
-      // --- PINNING ---
-      let deviceTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".device-section",
-          start: "top top",
-          end: "+=1500",
-          scrub: 1,
-          pin: true,
-        },
-      });
-      deviceTl
-        .from("#device-laptop", { scale: 0.8, y: 50 }, 0)
-        .to("#device-tablet", { left: "-40px", opacity: 1, rotation: -5 }, 0.2)
-        .to("#device-mobile", { right: "-20px", opacity: 1, rotation: 5 }, 0.4);
+</body>
 
-      // --- ORBIT ---
-      gsap.to(".orbit-item", {
-        y: -15,
-        duration: 2,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut",
-        stagger: { each: 0.5, from: "random" },
-      });
-
-      // --- MODULES SPLIT ANIMATION ---
-      gsap.from(".module-card", {
-        scrollTrigger: {
-          trigger: "#modules-grid",
-          start: "top 85%",
-          end: "top 40%",
-          scrub: 1,
-        },
-        y: 200,
-        scale: 0.5,
-        opacity: 0,
-        rotation: (i) => (i % 2 === 0 ? -15 : 15),
-        x: (i) => {
-          if (window.innerWidth > 1024) return i < 2 ? 300 : -300;
-          return 0;
-        },
-        stagger: 0.1,
-      });
-
-      // --- AUDIENCE SPLIT ANIMATION ---
-      gsap.from(".audience-card", {
-        scrollTrigger: {
-          trigger: "#audience-grid",
-          start: "top 85%",
-          end: "top 40%",
-          scrub: 1,
-        },
-        y: 200,
-        scale: 0.5,
-        opacity: 0,
-        rotation: (i) => (i % 2 === 0 ? 10 : -10),
-        x: (i) => {
-          if (window.innerWidth > 768) {
-            if (i === 0) return 300;
-            if (i === 2) return -300;
-          }
-          return 0;
-        },
-      });
-
-      // --- DARK FEATURE (NOW LIGHT) ---
-      gsap.from(".feature-card-1", {
-        scrollTrigger: {
-          trigger: "#dark-features",
-          start: "top 60%",
-          scrub: 1,
-        },
-        y: 100,
-        rotation: -10,
-      });
-      gsap.from(".feature-card-2", {
-        scrollTrigger: {
-          trigger: "#dark-features",
-          start: "top 60%",
-          scrub: 1,
-        },
-        y: 200,
-        rotation: 10,
-      });
-      gsap.to(".feature-item", {
-        scrollTrigger: { trigger: "#feature-list", start: "top 70%" },
-        x: 0,
-        opacity: 1,
-        stagger: 0.2,
-        duration: 0.8,
-      });
-
-      // --- INTEGRATION ---
-      let flowTl = gsap.timeline({
-        scrollTrigger: { trigger: "#integration", start: "top 60%" },
-      });
-      flowTl
-        .to(".flow-line", {
-          strokeDashoffset: 0,
-          duration: 1.5,
-          ease: "power2.inOut",
-        })
-        .from(
-          ".flow-node",
-          { scale: 0, opacity: 0, stagger: 0.2, ease: "back.out(1.5)" },
-          "-=1"
-        )
-        .from(
-          ".flow-center",
-          { scale: 0, opacity: 0, duration: 0.5, ease: "back.out(1.5)" },
-          "-=0.5"
-        )
-        .to(".check-item", { x: 0, opacity: 1, stagger: 0.1 }, "-=0.5");
-
-      // --- CTA ---
-      gsap.to(".cta-btns", {
-        scrollTrigger: { trigger: ".cta-btns", start: "top 90%" },
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-      });
-
-      // --- VIDEO ---
-      function toggleVideoModal(show) {
-        const modal = document.getElementById("video-modal");
-        const panel = document.getElementById("modal-panel");
-        const video = document.getElementById("local-video");
-        if (show) {
-          modal.classList.remove("hidden");
-          modal.classList.add("flex");
-          video.currentTime = 0;
-          video.play();
-          gsap.to(panel, { scale: 1, opacity: 1, duration: 0.3 });
-          document.body.style.overflow = "hidden";
-          lenis.stop();
-        } else {
-          gsap.to(panel, {
-            scale: 0.9,
-            opacity: 0,
-            duration: 0.3,
-            onComplete: () => {
-              modal.classList.add("hidden");
-              modal.classList.remove("flex");
-              video.pause();
-              document.body.style.overflow = "auto";
-              lenis.start();
-            },
-          });
-        }
-      }
-    </script>
-  </body>
 </html>

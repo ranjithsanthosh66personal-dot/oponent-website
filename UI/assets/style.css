@@ -1,0 +1,270 @@
+/* =========================================
+   Global Styles & Fonts
+   ========================================= */
+body {
+  /* Standard font stack and cursor hiding for custom cursor */
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Blog Details Specific Font */
+.font-tamil {
+  font-family: "Noto Sans Tamil", sans-serif;
+}
+
+/* Touch Device Reset */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   Custom Cursor - Logic for the following yellow dot and circle
+   ========================================= */
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #eab308;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  transition: all 0.2s ease-out;
+}
+
+/* Cursor Hover State */
+.cursor-hover {
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+  background-color: rgba(234, 179, 8, 0.1);
+  transform: translate(-50%, -50%) scale(1.5);
+  border-color: transparent;
+}
+
+/* =========================================
+   Animations & Keyframes - Shine effects and Text reveals
+   ========================================= */
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.char-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+.char {
+  transform: translateY(100%);
+  display: inline-block;
+}
+
+/* =========================================
+   Index Page Styles - Hero text gradients and 3D tilts
+   ========================================= */
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #ca8a04 0%, #fde047 50%, #ca8a04 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flow-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.perspective-3d {
+  perspective: 1000px;
+}
+
+.split-card {
+  will-change: transform, opacity;
+}
+
+/* =========================================
+   About Page Styles - Timeline beams and spotlight cards
+   ========================================= */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #b48112 0%, #d4a738 25%, #966b1a 50%, #d4a738 75%, #b48112 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+.spotlight-card {
+  position: relative;
+  background: white;
+  border: 1px solid #e7e5e4;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(234, 179, 8, 0.08), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 2;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.beam-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+}
+@media (min-width: 768px) {
+  .beam-container {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.beam-progress {
+  width: 100%;
+  height: 0%;
+  background: #eab308;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+}
+
+.image-mask {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.image-scale {
+  transform: scale(1.3);
+}
+
+/* =========================================
+   Features Page Styles - Holographic cards and Feature Grid
+   ========================================= */
+.holo-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+.holo-content {
+  transform: translateZ(20px);
+}
+.holo-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 10;
+}
+
+.feature-grid-item {
+  will-change: transform, opacity;
+  background: white;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.feature-grid-item:hover {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  border-color: #eab308;
+  z-index: 10;
+}
+
+/* =========================================
+   Pricing Page Styles - Card hover lifts and gold accents
+   ========================================= */
+.text-gold-gradient-pricing {
+  background: linear-gradient(135deg, #ca8a04 0%, #fde047 50%, #ca8a04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 6s linear infinite;
+  text-shadow: 0px 2px 10px rgba(234, 179, 8, 0.2);
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+.bg-grid-pattern {
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================================
+   Restored Utilities
+   ========================================= */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.shadow-inner-light {
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-gold-glow {
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+}
